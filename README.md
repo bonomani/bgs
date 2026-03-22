@@ -35,18 +35,22 @@ Read in this order:
 2. `./BGS-NAMING.md`
 3. `./BGS-GLOSSARY.md`
 4. `./SUITE-MAP.md`
-5. `./BGS-COMPLIANCE.md`
-6. `../ucc/governance/BISS.txt`
-7. `../uic/contract-semantics/UIC.txt`
-8. `../ucc/execution-semantics/UCC-EXECUTION.txt`
-9. `../tic/SPEC.md`
-10. `./AI-RISK-CONTROL-MAP.md`
-11. `./GAPS.md`
+5. `./BGS-VERSIONING.md`
+6. `./BGS-FREEZE.yaml`
+7. `./BGS-COMPLIANCE.md`
+8. `../ucc/governance/BISS.txt`
+9. `../uic/contract-semantics/UIC.txt`
+10. `../ucc/execution-semantics/UCC-EXECUTION.txt`
+11. `../tic/SPEC.md`
+12. `./AI-RISK-CONTROL-MAP.md`
+13. `./GAPS.md`
 
 Machine-friendly entry points:
 - `./suite-map.json`
 - `./BGS-NAMING.md`
 - `./BGS-GLOSSARY.md`
+- `./BGS-VERSIONING.md`
+- `./BGS-FREEZE.yaml`
 - `./BGS-COMPLIANCE.md`
 - `./AI-RISK-CONTROL-MAP.md`
 - `./GAPS.md`

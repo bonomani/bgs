@@ -20,6 +20,8 @@
       "./BGS-NAMING.md",
       "./BGS-GLOSSARY.md",
       "./SUITE-MAP.md",
+      "./BGS-VERSIONING.md",
+      "./BGS-FREEZE.yaml",
       "./BGS-COMPLIANCE.md",
       "../ucc/governance/BISS.txt",
       "../uic/contract-semantics/UIC.txt",
@@ -32,11 +34,14 @@
       "./suite-map.json",
       "./BGS-NAMING.md",
       "./BGS-GLOSSARY.md",
+      "./BGS-VERSIONING.md",
+      "./BGS-FREEZE.yaml",
       "./BGS-COMPLIANCE.md",
       "./AI-RISK-CONTROL-MAP.md",
       "./GAPS.md"
     ]
   },
+  "active_prepublic_freeze": "./BGS-FREEZE.yaml",
   "members": [
     {
       "id": "biss",

@@ -32,6 +32,9 @@ BGS defines:
 - the role of each member framework
 - the composition rules between them
 - the canonical suite composition map
+- the suite-level versioning and compatibility rules
+- explicit freeze records when composition must remain stable through a
+  draft or pre-public phase
 - the suite-level compliance profiles and claim rules
 - the boundary between the suite layer and the member frameworks
 - suite-level coverage maps when multiple frameworks and external
@@ -279,6 +282,8 @@ It exists to define:
 - suite objective
 - suite-level composition
 - the canonical suite map
+- suite-level versioning
+- suite-level freeze records
 - suite-level compliance
 - suite-level coverage maps
 - suite-level gaps

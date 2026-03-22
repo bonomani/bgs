@@ -59,9 +59,8 @@ CR-6 Rigor overlays are not standalone suite claims
   adoption profile. They are not standalone BGS profiles.
 
 CR-7 Version references must be pinned
-  Until BGS defines a suite-wide version composition model, every claim
-  must pin the member-framework versions it relies on by tag, commit, or
-  immutable document reference.
+  Every claim must follow `./BGS-VERSIONING.md` and pin the suite-layer
+  and member-framework refs it relies on by immutable reference.
 
 ------------------------------------------------------------
 
@@ -182,6 +181,7 @@ Every BGS adoption claim must contain at least:
 - `claim_id`
 - `profile`
 - `declared_scope`
+- `bgs_version_ref`
 - `members_used`
 - `overlays_used`
 - `member_version_refs`
@@ -191,6 +191,7 @@ Every BGS adoption claim must contain at least:
 Recommended additional fields:
 - `owner`
 - `date`
+- `freeze_id`
 - `limitations`
 - `known exclusions`
 
@@ -245,6 +246,7 @@ The following claims are misleading and should be avoided:
 claim_id: payments-agent-path-01
 profile: BGS-Governed-Verified
 declared_scope: outbound payment execution path
+freeze_id: BGS-FREEZE-PREPUBLIC-2026-03-22-A
 members_used:
   - BISS
   - UIC
@@ -258,6 +260,7 @@ member_version_refs:
   UCC: ucc@1505204
   TIC: tic@5f125a3
   RIG: ucc@1505204
+bgs_version_ref: bgs@12e5d16
 external_controls:
   iam_and_authorization: implemented
   sandboxing_or_runtime_isolation: implemented

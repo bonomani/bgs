@@ -82,18 +82,23 @@ RESOLUTION PATH:
 ------------------------------------------------------------
 
 BGS-4
-STATE: OPEN
+STATE: RESOLVED
 AREA: Cross-repo versioning
 GOAL: The suite should define how separate framework versions are composed.
-GAP:  There is no suite-level release or compatibility policy covering:
-      - which UIC version composes with which UCC version
-      - whether TIC versions are tied to suite versions
-      - how BGS versions reference member-framework versions
+GAP:  Resolved by `./BGS-VERSIONING.md` and the active freeze record
+      `./BGS-FREEZE.yaml`, which now define:
+      - the suite-level versioning units
+      - immutable reference rules
+      - required version binding for claims
+      - compatibility levels
+      - how BGS refs relate to member-repo refs
+      - how published composition records may be expressed
+      - the current pre-public frozen member refs
 IMPACT:
-- suite composition may become ambiguous over time
-- upgrades may not be clearly governable
+- suite composition is materially less ambiguous
+- version-bound suite claims are easier to interpret and audit
 RESOLUTION PATH:
-- define a suite compatibility and release model
+- keep versioning policy aligned with repo and release practices
 
 ------------------------------------------------------------
 
