@@ -5,10 +5,22 @@
     "version": "0.1",
     "status": "draft coordination layer"
   },
+  "naming": {
+    "canonical_short_name": "BGS",
+    "canonical_long_name": "Boundary Governance Suite",
+    "suite_layer_term": "BGS",
+    "axis_model_term": "BISS",
+    "member_repo_term": "member repo",
+    "member_framework_term": "member framework",
+    "rigor_overlay_terms": ["Basic", "RIG"]
+  },
   "entry_points": {
     "human": [
       "./SUITE.md",
+      "./BGS-NAMING.md",
+      "./BGS-GLOSSARY.md",
       "./SUITE-MAP.md",
+      "./BGS-COMPLIANCE.md",
       "../ucc/governance/BISS.txt",
       "../uic/contract-semantics/UIC.txt",
       "../ucc/execution-semantics/UCC-EXECUTION.txt",
@@ -18,6 +30,9 @@
     ],
     "machine": [
       "./suite-map.json",
+      "./BGS-NAMING.md",
+      "./BGS-GLOSSARY.md",
+      "./BGS-COMPLIANCE.md",
       "./AI-RISK-CONTROL-MAP.md",
       "./GAPS.md"
     ]

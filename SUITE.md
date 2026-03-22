@@ -27,9 +27,12 @@ The suite is designed so that each framework can:
 BGS defines:
 - the shared suite objective
 - the suite-level sub-goals
+- the canonical suite identity and naming rules
+- the shared suite-level glossary
 - the role of each member framework
 - the composition rules between them
 - the canonical suite composition map
+- the suite-level compliance profiles and claim rules
 - the boundary between the suite layer and the member frameworks
 - suite-level coverage maps when multiple frameworks and external
   controls must be explained together
@@ -271,9 +274,12 @@ Authoritative semantics remain in:
 This `./bgs/` folder is the suite layer only.
 It exists to define:
 - suite identity
+- suite naming
+- suite glossary
 - suite objective
 - suite-level composition
 - the canonical suite map
+- suite-level compliance
 - suite-level coverage maps
 - suite-level gaps
 

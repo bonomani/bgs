@@ -19,19 +19,21 @@ Gap states:
 ------------------------------------------------------------
 
 BGS-1
-STATE: OPEN
+STATE: RESOLVED
 AREA: Suite identity and naming
 GOAL: BGS should have a stable identity and vocabulary that does not
       overload existing framework terms.
-GAP:  The suite name is chosen, but its long-form naming, abbreviation
-      policy, and relation to BISS terminology are not yet frozen.
+GAP:  Resolved by `./BGS-NAMING.md`, which now freezes:
+      - the canonical short name
+      - the canonical long name
+      - the relation between BGS and BISS
+      - the distinction between member repos and member frameworks
+      - preferred and prohibited suite-level wording
 IMPACT:
-- cross-repo naming may drift
-- different docs may describe the same suite differently
+- suite-level vocabulary is materially clearer
+- drift between suite naming and member-framework naming is reduced
 RESOLUTION PATH:
-- define the canonical short name
-- define the canonical long name
-- define how BGS references BISS, UIC, UCC, TIC, Basic, and RIG
+- keep naming guidance aligned with suite evolution
 
 ------------------------------------------------------------
 
@@ -55,23 +57,27 @@ RESOLUTION PATH:
 ------------------------------------------------------------
 
 BGS-3
-STATE: OPEN
+STATE: RESOLVED
 AREA: Shared glossary
 GOAL: Cross-repo terminology should remain stable and non-conflicting.
-GAP:  There is no suite-level glossary yet for terms that span multiple
-      frameworks, such as:
+GAP:  Resolved by `./BGS-GLOSSARY.md`, which now defines suite-level
+      cross-framework terms including:
       - boundary
       - governance
       - preflight
       - execution
       - verification
       - rigor
+      - member repo
+      - member framework
+      - profile
+      - overlay
+      - external control
 IMPACT:
-- the same word may carry slightly different meanings across repos
-- suite-level onboarding remains harder than necessary
+- suite-level wording is materially clearer
+- cross-repo onboarding friction is reduced
 RESOLUTION PATH:
-- create a suite glossary that references, but does not replace,
-  member-framework vocabularies
+- keep the glossary aligned with member-framework evolution
 
 ------------------------------------------------------------
 
@@ -112,18 +118,21 @@ RESOLUTION PATH:
 ------------------------------------------------------------
 
 BGS-6
-STATE: OPEN
+STATE: RESOLVED
 AREA: Compliance model
 GOAL: BGS should define what it means to claim suite-level adoption.
-GAP:  There is no suite-level statement describing:
-      - what counts as using BGS
-      - what counts as partial BGS adoption
-      - what minimal artifacts prove adoption
+GAP:  Resolved by `./BGS-COMPLIANCE.md`, which now defines:
+      - valid BGS adoption profiles
+      - scope-based suite claims
+      - required claim fields
+      - minimum evidence by profile
+      - invalid and misleading claims
+      - required declaration of external controls
 IMPACT:
-- "BGS-compliant" would currently be undefined
-- teams may claim adoption with incompatible evidence
+- suite-level adoption claims are now materially clearer
+- incompatible or overbroad BGS claims are easier to reject
 RESOLUTION PATH:
-- define suite-level adoption profiles and evidence expectations
+- keep profile and evidence rules aligned with suite evolution
 
 ------------------------------------------------------------
 

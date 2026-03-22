@@ -12,10 +12,13 @@ BGS does not move their files.
 Its role is to define the common objective, composition rules, and
 navigation between the separate frameworks.
 
-Current suite members:
+Current member repos:
 - `../ucc/`
 - `../uic/`
 - `../tic/`
+
+The suite-level member frameworks are defined canonically in:
+- `./SUITE-MAP.md`
 
 Current authoritative foundations referenced by BGS:
 - `../ucc/governance/BISS.txt`
@@ -29,16 +32,22 @@ Current authoritative foundations referenced by BGS:
 
 Read in this order:
 1. `./SUITE.md`
-2. `./SUITE-MAP.md`
-3. `../ucc/governance/BISS.txt`
-4. `../uic/contract-semantics/UIC.txt`
-5. `../ucc/execution-semantics/UCC-EXECUTION.txt`
-6. `../tic/SPEC.md`
-7. `./AI-RISK-CONTROL-MAP.md`
-8. `./GAPS.md`
+2. `./BGS-NAMING.md`
+3. `./BGS-GLOSSARY.md`
+4. `./SUITE-MAP.md`
+5. `./BGS-COMPLIANCE.md`
+6. `../ucc/governance/BISS.txt`
+7. `../uic/contract-semantics/UIC.txt`
+8. `../ucc/execution-semantics/UCC-EXECUTION.txt`
+9. `../tic/SPEC.md`
+10. `./AI-RISK-CONTROL-MAP.md`
+11. `./GAPS.md`
 
 Machine-friendly entry points:
 - `./suite-map.json`
+- `./BGS-NAMING.md`
+- `./BGS-GLOSSARY.md`
+- `./BGS-COMPLIANCE.md`
 - `./AI-RISK-CONTROL-MAP.md`
 - `./GAPS.md`
 
