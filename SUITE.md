@@ -29,6 +29,7 @@ BGS defines:
 - the suite-level sub-goals
 - the role of each member framework
 - the composition rules between them
+- the canonical suite composition map
 - the boundary between the suite layer and the member frameworks
 - suite-level coverage maps when multiple frameworks and external
   controls must be explained together
@@ -272,6 +273,7 @@ It exists to define:
 - suite identity
 - suite objective
 - suite-level composition
+- the canonical suite map
 - suite-level coverage maps
 - suite-level gaps
 

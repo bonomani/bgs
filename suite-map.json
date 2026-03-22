@@ -1,0 +1,206 @@
+{
+  "suite": {
+    "short_name": "BGS",
+    "long_name": "Boundary Governance Suite",
+    "version": "0.1",
+    "status": "draft coordination layer"
+  },
+  "entry_points": {
+    "human": [
+      "./SUITE.md",
+      "./SUITE-MAP.md",
+      "../ucc/governance/BISS.txt",
+      "../uic/contract-semantics/UIC.txt",
+      "../ucc/execution-semantics/UCC-EXECUTION.txt",
+      "../tic/SPEC.md",
+      "./AI-RISK-CONTROL-MAP.md",
+      "./GAPS.md"
+    ],
+    "machine": [
+      "./suite-map.json",
+      "./AI-RISK-CONTROL-MAP.md",
+      "./GAPS.md"
+    ]
+  },
+  "members": [
+    {
+      "id": "biss",
+      "name": "BISS",
+      "kind": "axis_model",
+      "standalone": true,
+      "semantic_base": [],
+      "composition_with": ["gic", "gcc", "basic", "rig", "uic", "ucc", "tic"],
+      "primary_use": "Classify interaction type and separate contract type from rigor grade.",
+      "maturity": {
+        "level": "foundation",
+        "note": "Architectural frame for the suite."
+      },
+      "authoritative_docs": [
+        "../ucc/governance/BISS.txt"
+      ]
+    },
+    {
+      "id": "gic",
+      "name": "GIC",
+      "kind": "interaction_foundation",
+      "standalone": true,
+      "semantic_base": [],
+      "composition_with": ["gcc", "uic", "ucc"],
+      "primary_use": "Define observable interaction semantics.",
+      "maturity": {
+        "level": "foundation",
+        "note": "Base interaction layer."
+      },
+      "authoritative_docs": [
+        "../ucc/contract-semantics/GIC.txt"
+      ]
+    },
+    {
+      "id": "gcc",
+      "name": "GCC",
+      "kind": "contract_foundation",
+      "standalone": true,
+      "semantic_base": ["gic"],
+      "composition_with": ["uic", "ucc"],
+      "primary_use": "Define explicit contract structure and closed result discipline.",
+      "maturity": {
+        "level": "foundation",
+        "note": "Semantic floor below UIC and UCC."
+      },
+      "authoritative_docs": [
+        "../ucc/contract-semantics/GCC.txt"
+      ]
+    },
+    {
+      "id": "basic",
+      "name": "Basic",
+      "kind": "rigor_grade",
+      "standalone": true,
+      "semantic_base": [],
+      "composition_with": ["gic", "gcc", "uic", "ucc", "tic", "rig"],
+      "primary_use": "Signal minimal implementation rigor.",
+      "maturity": {
+        "level": "foundation",
+        "note": "Orthogonal rigor overlay."
+      },
+      "authoritative_docs": [
+        "../ucc/governance/BASIC.txt"
+      ]
+    },
+    {
+      "id": "rig",
+      "name": "RIG",
+      "kind": "rigor_grade",
+      "standalone": true,
+      "semantic_base": [],
+      "composition_with": ["gic", "gcc", "uic", "ucc", "tic", "basic"],
+      "primary_use": "Signal stronger implementation rigor and observability discipline.",
+      "maturity": {
+        "level": "foundation",
+        "note": "Orthogonal rigor overlay."
+      },
+      "authoritative_docs": [
+        "../ucc/governance/RIG.txt"
+      ]
+    },
+    {
+      "id": "uic",
+      "name": "UIC",
+      "kind": "operational_contract",
+      "standalone": true,
+      "semantic_base": ["gic", "gcc"],
+      "composition_with": ["ucc", "tic", "biss", "basic", "rig"],
+      "ordered_before": ["ucc"],
+      "primary_use": "Govern preflight decisions, gates, preferences, policies, and approvals before execution.",
+      "maturity": {
+        "level": "draft",
+        "note": "Useful when governed preflight is needed."
+      },
+      "authoritative_docs": [
+        "../uic/contract-semantics/UIC.txt",
+        "../uic/guidance/UIC-PREFLIGHT.txt"
+      ]
+    },
+    {
+      "id": "ucc",
+      "name": "UCC",
+      "kind": "operational_contract",
+      "standalone": true,
+      "semantic_base": ["gic", "gcc"],
+      "composition_with": ["uic", "tic", "biss", "basic", "rig"],
+      "receives_from": ["uic"],
+      "verified_by": ["tic"],
+      "primary_use": "Govern declaration-driven execution and convergence with explicit results.",
+      "maturity": {
+        "level": "strong_operational_baseline",
+        "note": "Strongest current operational baseline in the suite."
+      },
+      "authoritative_docs": [
+        "../ucc/execution-semantics/UCC-EXECUTION.txt"
+      ]
+    },
+    {
+      "id": "tic",
+      "name": "TIC",
+      "kind": "verification_contract",
+      "standalone": true,
+      "semantic_base": [],
+      "composition_with": ["uic", "ucc", "biss", "basic", "rig"],
+      "verifies": ["uic", "ucc"],
+      "primary_use": "Define tests, explicit oracles, diagnostics, and traceability.",
+      "maturity": {
+        "level": "specified_partial_integration",
+        "note": "Specified and useful, but suite-wide compliance integration is partial."
+      },
+      "authoritative_docs": [
+        "../tic/SPEC.md"
+      ]
+    }
+  ],
+  "adoption_profiles": [
+    {
+      "id": "classification_only",
+      "members": ["biss"],
+      "description": "Use BISS as the classification lens only."
+    },
+    {
+      "id": "contract_foundation",
+      "members": ["gic", "gcc"],
+      "description": "Use the interaction and contract foundations without operational layers."
+    },
+    {
+      "id": "minimal_governed_convergence",
+      "members": ["biss", "ucc"],
+      "description": "Minimal governed convergence."
+    },
+    {
+      "id": "governed_execution",
+      "members": ["biss", "uic", "ucc"],
+      "description": "Governed preflight and governed execution."
+    },
+    {
+      "id": "verified_execution",
+      "members": ["biss", "ucc", "tic"],
+      "description": "Governed execution with explicit verification."
+    },
+    {
+      "id": "governed_and_verified_execution",
+      "members": ["biss", "uic", "ucc", "tic"],
+      "description": "Governed preflight, governed execution, and explicit verification."
+    }
+  ],
+  "orthogonal_overlays": [
+    {
+      "members": ["basic", "rig"],
+      "applies_to": ["gic", "gcc", "uic", "ucc", "tic"],
+      "description": "Rigor overlays do not change interaction type."
+    }
+  ],
+  "recommended_adoption_order": [
+    "biss",
+    "ucc",
+    "tic",
+    "uic",
+    "basic_or_rig_overlay"
+  ]
+}

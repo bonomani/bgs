@@ -36,19 +36,21 @@ RESOLUTION PATH:
 ------------------------------------------------------------
 
 BGS-2
-STATE: OPEN
+STATE: RESOLVED
 AREA: Suite map
 GOAL: The suite should expose one canonical dependency and composition map.
-GAP:  BGS currently defines high-level roles and composition rules, but no
-      formal suite matrix exists yet for:
-      - required vs optional relationships
+GAP:  Resolved by `./SUITE-MAP.md` and `./suite-map.json`, which now
+      provide:
+      - a canonical member matrix
       - standalone vs compositional usage
-      - maturity by framework
+      - semantic-base vs composition ordering
+      - maturity signals by framework
+      - valid adoption profiles
 IMPACT:
-- adoption paths remain partly interpretive
-- architecture reviews may reach inconsistent conclusions
+- adoption paths are now materially clearer
+- architecture review ambiguity is reduced
 RESOLUTION PATH:
-- add a suite matrix covering members, dependencies, optionality, and maturity
+- keep the canonical map aligned with member-framework evolution
 
 ------------------------------------------------------------
 
@@ -126,57 +128,59 @@ RESOLUTION PATH:
 ------------------------------------------------------------
 
 BGS-7
-STATE: PARTIAL
+STATE: RESOLVED
 AREA: Member maturity alignment
 GOAL: BGS should present member frameworks with clear maturity signals.
-GAP:  Member frameworks do not all have the same maturity:
-      - UCC has a stronger execution, schema, and test baseline
-      - UIC is still draft
-      - TIC is specified but not yet connected to a suite-wide compliance story
+GAP:  Resolved by `./SUITE-MAP.md`, which now publishes:
+      - maturity signals by member
+      - a recommended adoption order by maturity and implementation risk
 IMPACT:
-- readers may assume equal readiness across the suite
-- adoption sequencing may be poorly chosen
+- unequal maturity is now visible at suite level
+- adopters have a clearer recommended sequencing path
 RESOLUTION PATH:
-- publish a suite maturity table
-- recommend an adoption order by maturity and risk
+- keep maturity signals updated as member frameworks evolve
 
 ------------------------------------------------------------
 
 BGS-8
-STATE: OPEN
+STATE: PARTIAL
 AREA: Navigation and discoverability
 GOAL: A new reader should be able to discover the whole suite from one
       stable entry point.
-GAP:  BGS now has a suite entry point, but the member repos do not yet
-      consistently point back to the suite layer.
+GAP:  BGS now has:
+      - a suite entry point
+      - a canonical reading path
+      - a canonical suite map
+      but the member repos do not yet consistently point back to the
+      suite layer.
 IMPACT:
-- top-down navigation is incomplete
-- the suite remains harder to discover than the individual repos
+- top-down navigation exists from `./bgs/`
+- reverse discovery from member repos remains incomplete
 RESOLUTION PATH:
 - add back-references from member repos to `../bgs/`
-- add a canonical suite reading path
+- surface the canonical reading path consistently across member repos
 
 ------------------------------------------------------------
 
 BGS-9
-STATE: OPEN
+STATE: PARTIAL
 AREA: Human and agent friendliness
 GOAL: BGS should be easy for humans to read and easy for AI agents to
       traverse and apply.
-GAP:  The suite does not yet define:
-      - a canonical machine-friendly suite map
-      - a stable minimal reading path for agents
+GAP:  BGS now provides:
+      - a canonical human-readable suite map in `./SUITE-MAP.md`
+      - a machine-friendly suite map in `./suite-map.json`
+      - stable suite entry points in `./README.md`
+      but it does not yet fully define:
       - document formatting conventions optimized for both human and
         agent consumption
-      - which suite artifacts are prose-first vs machine-first
+      - a complete prose-first vs machine-first artifact policy
 IMPACT:
-- human onboarding may remain slower than necessary
-- AI agents may interpret suite composition inconsistently
-- the suite may drift into either human-only prose or machine-only structure
+- human and agent navigation are materially improved
+- formatting and artifact-policy drift are still possible
 RESOLUTION PATH:
-- define a suite map artifact
 - define dual readability conventions
-- identify stable entry docs for humans vs agents
+- define the prose-first vs machine-first artifact policy
 
 ------------------------------------------------------------
 

@@ -29,12 +29,18 @@ Current authoritative foundations referenced by BGS:
 
 Read in this order:
 1. `./SUITE.md`
-2. `../ucc/governance/BISS.txt`
-3. `../uic/contract-semantics/UIC.txt`
-4. `../ucc/execution-semantics/UCC-EXECUTION.txt`
-5. `../tic/SPEC.md`
-6. `./AI-RISK-CONTROL-MAP.md`
-7. `./GAPS.md`
+2. `./SUITE-MAP.md`
+3. `../ucc/governance/BISS.txt`
+4. `../uic/contract-semantics/UIC.txt`
+5. `../ucc/execution-semantics/UCC-EXECUTION.txt`
+6. `../tic/SPEC.md`
+7. `./AI-RISK-CONTROL-MAP.md`
+8. `./GAPS.md`
+
+Machine-friendly entry points:
+- `./suite-map.json`
+- `./AI-RISK-CONTROL-MAP.md`
+- `./GAPS.md`
 
 Design rules:
 - keep frameworks separate
