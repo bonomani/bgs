@@ -1,0 +1,31 @@
+{
+  "scope": "Prompt-to-change workflow for the support automation tool",
+  "gates": [
+    {
+      "name": "change-approval",
+      "kind": "hard",
+      "status": "passed",
+      "evidence": "Human reviewer approved the requested change."
+    },
+    {
+      "name": "secret-access-check",
+      "kind": "hard",
+      "status": "passed",
+      "evidence": "No new secret access was required."
+    },
+    {
+      "name": "risk-review",
+      "kind": "soft",
+      "status": "warned",
+      "evidence": "Change touches support workflow routing and requires audit logging."
+    }
+  ],
+  "resolved_policies": {
+    "may_execute": true,
+    "requires_followup": true,
+    "followup_notes": [
+      "Enable audit log retention for the new workflow branch.",
+      "Confirm runtime sandbox remains enabled."
+    ]
+  }
+}

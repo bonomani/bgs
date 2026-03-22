@@ -1,0 +1,13 @@
+{
+  "scope": "Prompt-to-change workflow for the support automation tool",
+  "observed_state": "Support workflow branch currently routes requests through legacy handler",
+  "desired_state": "Support workflow branch routes requests through the new approval gate",
+  "diff": [
+    "workflow-router updated to include approval gate",
+    "legacy handler retained for fallback path"
+  ],
+  "execution_result": {
+    "status": "converged",
+    "notes": "Declared workflow change converged with one non-blocking follow-up."
+  }
+}

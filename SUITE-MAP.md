@@ -24,6 +24,12 @@ The machine-readable counterpart is `./suite-map.json`.
 1. MEMBER MATRIX
 ----------------
 
+Repository hosting rule:
+- suite membership is semantic
+- repo membership is physical
+- a single repo may host multiple member frameworks
+- repo names do not have to match framework names one-to-one
+
 | Member | Kind | Standalone | Semantic base | Common handoff or composition | Primary use in BGS | Maturity signal | Authoritative docs |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | BISS | Axis model | Yes | none | informs GIC, GCC, UIC, UCC, TIC, Basic, RIG | classify interaction type and separate contract type from rigor grade | Foundation | `../ucc/governance/BISS.txt` |
@@ -53,7 +59,27 @@ The machine-readable counterpart is `./suite-map.json`.
 
 ------------------------------------------------------------
 
-3. VALID ADOPTION PROFILES
+3. REPO HOSTING MAP
+-------------------
+
+| Repo | Hosted member frameworks |
+| --- | --- |
+| `../ucc/` | `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, `UCC` |
+| `../uic/` | `UIC` |
+| `../tic/` | `TIC` |
+
+Interpretation rules:
+- hosting is a repository fact, not a semantic equivalence
+- a hosted framework can still be described independently at suite level
+- hosted frameworks may later be split into separate repos without changing their suite identity
+- keep a framework inside a host repo while it shares release cadence,
+  ownership, and change surface with the other hosted frameworks
+- split a framework into its own repo when any two of these become true: it needs an independent release cadence, it needs independent version refs for ordinary claims, it has a distinct owner or reviewer set, it has a distinct external audience or adoption profile, or it changes without the host repo's main lifecycle
+- keep a framework bundled when only one of those conditions is true and the shared host remains the lower-friction model
+
+------------------------------------------------------------
+
+4. VALID ADOPTION PROFILES
 --------------------------
 
 Profile A — Classification only
@@ -86,7 +112,7 @@ Interpretation rules:
 
 ------------------------------------------------------------
 
-4. DEPENDENCY INTERPRETATION
+5. DEPENDENCY INTERPRETATION
 ----------------------------
 
 BGS uses two different dependency concepts:
@@ -107,7 +133,7 @@ It is a suite of frameworks that can be used alone or composed explicitly.
 
 ------------------------------------------------------------
 
-5. MATURITY AND ADOPTION ORDER
+6. MATURITY AND ADOPTION ORDER
 ------------------------------
 
 | Member or layer | Current signal | Recommended use now |
@@ -128,7 +154,7 @@ Recommended adoption order by maturity and implementation risk:
 
 ------------------------------------------------------------
 
-6. CANONICAL ENTRY POINTS
+7. CANONICAL ENTRY POINTS
 -------------------------
 
 Human entry points:

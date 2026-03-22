@@ -157,7 +157,7 @@ RESOLUTION PATH:
 ------------------------------------------------------------
 
 BGS-8
-STATE: PARTIAL
+STATE: RESOLVED
 AREA: Navigation and discoverability
 GOAL: A new reader should be able to discover the whole suite from one
       stable entry point.
@@ -165,19 +165,18 @@ GAP:  BGS now has:
       - a suite entry point
       - a canonical reading path
       - a canonical suite map
-      but the member repos do not yet consistently point back to the
-      suite layer.
+      - explicit repo-hosting map and split/keep policy
+      - back-references from the member repos to `../bgs/`
 IMPACT:
 - top-down navigation exists from `./bgs/`
-- reverse discovery from member repos remains incomplete
+- reverse discovery from member repos is now materially improved
 RESOLUTION PATH:
-- add back-references from member repos to `../bgs/`
-- surface the canonical reading path consistently across member repos
+- keep the back-references aligned with future suite updates
 
 ------------------------------------------------------------
 
 BGS-9
-STATE: PARTIAL
+STATE: RESOLVED
 AREA: Human and agent friendliness
 GOAL: BGS should be easy for humans to read and easy for AI agents to
       traverse and apply.
@@ -185,16 +184,14 @@ GAP:  BGS now provides:
       - a canonical human-readable suite map in `./SUITE-MAP.md`
       - a machine-friendly suite map in `./suite-map.json`
       - stable suite entry points in `./README.md`
-      but it does not yet fully define:
-      - document formatting conventions optimized for both human and
-        agent consumption
-      - a complete prose-first vs machine-first artifact policy
+      - explicit repo-hosting and split/keep guidance
+      - a prose-first vs machine-first artifact policy
+      - clear formatting conventions for both human and machine use
 IMPACT:
 - human and agent navigation are materially improved
-- formatting and artifact-policy drift are still possible
+- formatting and artifact-policy drift are materially reduced
 RESOLUTION PATH:
-- define dual readability conventions
-- define the prose-first vs machine-first artifact policy
+- keep prose and machine artifacts aligned as the suite evolves
 
 ------------------------------------------------------------
 

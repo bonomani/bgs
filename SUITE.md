@@ -31,7 +31,6 @@ BGS defines:
 - the shared suite-level glossary
 - the role of each member framework
 - the composition rules between them
-- the canonical suite composition map
 - the suite-level versioning and compatibility rules
 - explicit freeze records when composition must remain stable through a
   draft or pre-public phase
@@ -39,6 +38,11 @@ BGS defines:
 - the boundary between the suite layer and the member frameworks
 - suite-level coverage maps when multiple frameworks and external
   controls must be explained together
+- the expectation that member repos can evolve independently when their
+  lifecycle, ownership, or release needs differ
+
+The canonical membership matrix, repo-hosting map, adoption profiles,
+and split policy live in `./SUITE-MAP.md`.
 
 BGS does not redefine the internal semantics of UIC, UCC, TIC, BISS,
 GIC, GCC, Basic, or RIG.
@@ -67,13 +71,17 @@ In practical terms, BGS aims to ensure that:
 - sensitive data crossing boundaries can be minimized, justified, and audited
 - implementation rigor can be added without changing boundary semantics
 - the suite remains readable to humans and structurally usable by AI agents
+- the suite stays as simple as possible while providing direct utility
+  that materially improves code and workflow quality
+- the suite helps AI agents default toward clearer, safer, and more
+  useful software behavior rather than ad hoc complexity
 
 ------------------------------------------------------------
 
 3. SUB-GOALS
 ------------
 
-BGS organizes the overall goal into thirteen suite-level sub-goals.
+BGS organizes the overall goal into sixteen suite-level sub-goals.
 
 SG-1 Classification
   Classify boundary interactions explicitly and choose the right contract
@@ -131,6 +139,19 @@ SG-13 Data minimization and confidentiality
   Minimize unnecessary data crossing boundaries and preserve enough
   structure to justify, review, and audit access to confidential,
   private, or sensitive information.
+
+SG-14 Simplicity and direct utility
+  Keep the suite as simple as possible while ensuring each rule or
+  artifact has direct utility that materially improves code quality,
+  workflow quality, or governed execution quality.
+
+SG-15 Independent repo evolution
+  Let each member repo evolve on its own schedule when its ownership,
+  lifecycle, or release management needs differ from the rest of the suite.
+
+SG-16 Helpful default behaviors
+  Give AI agents simple default behaviors that bias toward clearer code,
+  safer execution, explicit claims, and direct software improvement.
 
 ------------------------------------------------------------
 
@@ -263,6 +284,8 @@ BGS does not:
   or privilege abuse without external security controls
 - solve model collapse or all reasoning-quality failures inside the model
 - assign legal liability by itself
+
+For fit, non-fit, and partial adoption rules, see `./BGS-COMPLIANCE.md`.
 
 ------------------------------------------------------------
 
