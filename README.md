@@ -19,3 +19,4 @@ Start here:
 7. `./STATUS.md`
 8. `./BGS-COMPLIANCE.md`
 9. `./BGS-DECISION-TEMPLATE.md`
+10. `./SCRIPT-QUALITY.md`

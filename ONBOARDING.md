@@ -16,6 +16,7 @@ Read this first:
 5. `./AI-PROBLEM-MATRIX.md`
 6. `./BGS-COMPLIANCE.md`
 7. `./BGS-DECISION-TEMPLATE.md`
+8. `./SCRIPT-QUALITY.md`
 
 Core concepts:
 - `BGS` is the suite.
@@ -46,6 +47,7 @@ What to use for what:
 - `BGS-VERSIONING.md`: immutable refs and compatibility rules.
 - `AI-PROBLEM-MATRIX.md`: common AI-agent problem classes mapped to BGS.
 - `BGS-COMPLIANCE.md`: decision rules and project entry requirements.
+- `SCRIPT-QUALITY.md`: minimum, maximum, and recommended slices for scripts.
 - `AI-RISK-CONTROL-MAP.md`: what BGS can govern directly and what still needs external controls.
 
 For fit, non-fit, and partial adoption rules, see:

@@ -154,7 +154,24 @@ Recommended adoption order by maturity and implementation risk:
 
 ------------------------------------------------------------
 
-7. CANONICAL ENTRY POINTS
+7. SCRIPT QUALITY SLICES
+------------------------
+
+Recommended script baseline:
+- `Basic`
+
+Recommended install-script slice:
+- `Basic + UCC`
+
+Upgrade path for install scripts:
+- add `UIC` when preflight gates or approvals are needed
+- add `TIC` when post-install verification or traceability is required
+
+`SCRIPT-QUALITY.md` gives the operational minimum and maximum for these script classes.
+
+------------------------------------------------------------
+
+8. CANONICAL ENTRY POINTS
 -------------------------
 
 Human entry points:
@@ -171,6 +188,7 @@ Human entry points:
 11. `../tic/SPEC.md`
 12. `./AI-RISK-CONTROL-MAP.md`
 13. `./GAPS.md`
+14. `./SCRIPT-QUALITY.md`
 
 Machine-friendly entry points:
 - `./suite-map.json`
@@ -181,6 +199,7 @@ Machine-friendly entry points:
 - `./BGS-COMPLIANCE.md`
 - `./AI-RISK-CONTROL-MAP.md`
 - `./GAPS.md`
+- `./SCRIPT-QUALITY.md`
 
 ------------------------------------------------------------
 
