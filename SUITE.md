@@ -35,6 +35,7 @@ BGS defines:
 - explicit freeze records when version numbering and published
   identifiers must remain stable through a draft or pre-public phase
 - the suite-level compliance slices and claim rules
+- the distinction between target-slice selection and evidenced claims
 - the boundary between the suite layer and the member frameworks
 - suite-level coverage maps when multiple frameworks and external
   controls must be explained together
@@ -48,6 +49,12 @@ and split policy live in `./SUITE-MAP.md`.
 
 BGS does not redefine the internal semantics of UIC, UCC, TIC, ASM,
 BISS, GIC, GCC, Basic, or RIG.
+
+Interpretation rule:
+- BGS slices are selected first as the smallest sufficient governance
+  design for the declared scope and risks
+- a BGS claim is made only after the required artifacts and evidence for
+  that slice exist
 
 ------------------------------------------------------------
 

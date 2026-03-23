@@ -7,6 +7,9 @@ Purpose:
 - It keeps the frameworks separate while defining how they compose.
 - It does not merge semantics or move authoritative files out of member repos.
 - In this workspace, development is assumed to be AI-assisted by default.
+- BGS slice selection is prescriptive first: choose the smallest
+  sufficient target slice for the scope and risk, then implement and
+  evidence it, then claim it.
 
 Read this first:
 1. `./README.md`

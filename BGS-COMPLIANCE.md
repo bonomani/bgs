@@ -22,6 +22,14 @@ This document does not replace the authoritative semantics of member
 frameworks.
 It only defines how suite-level adoption decisions must be expressed.
 
+Interpretation rule:
+- a `target slice` is the smallest sufficient BGS slice selected for the
+  declared scope, risk, and governance need
+- a `claimed slice` is a target slice only after its required artifacts
+  and evidence exist
+- projects should choose the target slice first, then implement and
+  evidence it, then claim it
+
 ------------------------------------------------------------
 
 1. CORE RULES
@@ -30,6 +38,11 @@ It only defines how suite-level adoption decisions must be expressed.
 CR-1 No unnamed-slice decision
   No team, product, or system may say it uses BGS without naming an
   explicit BGS slice or decision outcome from this document.
+
+CR-1a Slice selection is need-driven
+  The selected BGS slice must be the smallest sufficient slice for the
+  declared scope, risk, and governance need. It must not be chosen only
+  by describing the repo as-found.
 
 CR-2 Scope must be declared
   Every BGS decision must declare the scope to which the decision
@@ -334,8 +347,9 @@ BGS is a good fit when the scope involves one or more of these patterns:
 - compliance-sensitive delivery that needs evidence-backed claims
 
 If only some of those patterns apply, adopt BGS partially:
-- use only the slices that match the real workflow
-- use only the member frameworks that solve the actual problem
+- choose the smallest sufficient target slice for the real workflow
+- implement only the member frameworks that solve the actual problem
+- claim the slice only once the required evidence exists
 - skip concepts that add overhead without direct utility
 
 Examples of partial use:

@@ -17,6 +17,12 @@ Role map:
 - `TIC` = verification contract
 - `ASM` = state model
 
+Selection rule:
+- first choose the smallest sufficient target slice for the declared
+  scope, risk, and governance need
+- then implement the required member artifacts and evidence
+- claim the slice only when that evidence exists
+
 Start here:
 1. `./SUITE.md`
 2. `./SUITE-MAP.md`

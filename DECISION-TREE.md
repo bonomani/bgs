@@ -11,6 +11,9 @@ Interpretation rule:
 - when this guide names member frameworks such as `UCC` or `UIC + UCC`, it is describing a local implementation choice
 - when this guide names `BGS-...`, it is describing a claimable suite slice
 - all suite-level claims still follow `./BGS-COMPLIANCE.md`
+- choose the target slice from the project's needs and risks first, not
+  from the repo as-found
+- make the suite-level claim only after the target slice is evidenced
 
 Start here:
 1. What kind of software is this?
@@ -49,7 +52,7 @@ If the project needs:
 - but not formal governance claims
 
 Recommendation:
-- the smallest named BGS slice that matches the real need
+- the smallest named BGS slice that is sufficient for the real need
 - usually `BGS-Classification`, `BGS-Foundation`, or `BGS-Execution`
 
 If the project needs:
@@ -139,6 +142,11 @@ Recommendation:
 - Implement the smallest BGS slice that coordinates the handoffs
 - Use repo-hosting and split policy from `SUITE-MAP.md`
 
+Selection rule:
+- pick the smallest sufficient target slice for the scope first
+- then implement and evidence it
+- do not back-fit the target slice only from the current repo state
+
 ------------------------------------------------------------
 
 3. MODULE SELECTION
@@ -146,7 +154,8 @@ Recommendation:
 
 Interpretation rule:
 - this section recommends member-framework adoption, not claimable BGS slices by itself
-- map the resulting member set to the smallest valid `BGS-...` slice in `./BGS-COMPLIANCE.md` when a suite-level claim is needed
+- map the planned member set to the smallest sufficient target slice in `./BGS-COMPLIANCE.md`
+- make the suite-level claim only when that target slice is actually evidenced
 
 If you need only one thing:
 - classification -> implement `BISS`
