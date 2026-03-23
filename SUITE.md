@@ -32,9 +32,9 @@ BGS defines:
 - the role of each member framework
 - the composition rules between them
 - the suite-level versioning and compatibility rules
-- explicit freeze records when composition must remain stable through a
-  draft or pre-public phase
-- the suite-level compliance profiles and claim rules
+- explicit freeze records when version numbering and published
+  identifiers must remain stable through a draft or pre-public phase
+- the suite-level compliance slices and claim rules
 - the boundary between the suite layer and the member frameworks
 - suite-level coverage maps when multiple frameworks and external
   controls must be explained together
@@ -43,7 +43,7 @@ BGS defines:
 - the default boundary that BGS applies to projects and workflows, not
   to the BGS suite itself unless a separate explicit decision says so
 
-The canonical membership matrix, repo-hosting map, adoption profiles,
+The canonical membership matrix, repo-hosting map, adoption slices,
 and split policy live in `./SUITE-MAP.md`.
 
 BGS does not redefine the internal semantics of UIC, UCC, TIC, ASM,

@@ -1,7 +1,7 @@
 # BGS-Governed-Verified Example
 
-claim_id: claim-bgs-governed-verified-001
-profile: BGS-Governed-Verified
+decision_id: claim-bgs-governed-verified-001
+bgs_slice: BGS-Governed-Verified
 declared_scope: "Prompt-to-change workflow for the support automation tool"
 bgs_version_ref: bgs@12e5d16
 members_used:

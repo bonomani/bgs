@@ -14,7 +14,7 @@ This document defines the canonical suite map for BGS:
 - which ones can stand alone
 - how they compose
 - which maturity signal each member currently carries
-- which adoption profiles are valid
+- which adoption slices are valid
 
 This is the main human-readable suite map.
 The machine-readable counterpart is `./suite-map.json`.
@@ -115,8 +115,8 @@ Orthogonal overlay
 - `Basic` or `RIG` may be applied to any of the above implementations
 
 Interpretation rules:
-- no profile is mandatory for every adopter
-- `ASM` remains a standalone framework, but standalone ASM is not a claimable BGS adoption profile
+- no slice is mandatory for every adopter
+- `ASM` remains a standalone framework, but standalone ASM is not a claimable BGS adoption slice
 - `ASM` may precede `UIC` and `UCC` when explicit state semantics are part of the declared scope
 - `UIC` is not required for `UCC`, but precedes `UCC` when both are used
 - `TIC` may verify `UIC`, `UCC`, or other governed targets

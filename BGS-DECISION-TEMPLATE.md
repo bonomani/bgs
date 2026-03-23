@@ -38,12 +38,19 @@ read_next:
 Decision record minimum fields:
 - `decision_id`
 - `bgs_slice`
-- `decision_reason`
-- `applies_to_scope`
+- `declared_scope`
 - `bgs_version_ref`
+- `members_used`
+- `overlays_used`
 - `member_version_refs`
 - `external_controls`
 - `evidence_refs`
+
+Recommended additional decision-record fields:
+- `decision_reason`
+- `owner`
+- `date`
+- `limitations`
 
 Suggested project flow:
 1. read the decision tree

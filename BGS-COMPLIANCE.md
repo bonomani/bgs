@@ -27,7 +27,7 @@ It only defines how suite-level adoption decisions must be expressed.
 1. CORE RULES
 -------------
 
-CR-1 No profileless decision
+CR-1 No unnamed-slice decision
   No team, product, or system may say it uses BGS without naming an
   explicit BGS slice or decision outcome from this document.
 
@@ -253,7 +253,6 @@ Every BGS adoption decision must contain at least:
 Recommended additional fields:
 - `owner`
 - `date`
-- `freeze_id`
 - `limitations`
 - `known exclusions`
 
@@ -334,7 +333,7 @@ BGS is a good fit when the scope involves one or more of these patterns:
 - compliance-sensitive delivery that needs evidence-backed claims
 
 If only some of those patterns apply, adopt BGS partially:
-- use only the profiles that match the real workflow
+- use only the slices that match the real workflow
 - use only the member frameworks that solve the actual problem
 - skip concepts that add overhead without direct utility
 
@@ -446,7 +445,6 @@ The following decisions are misleading and should be avoided:
 decision_id: payments-agent-path-01
 bgs_slice: BGS-Governed-Verified
 declared_scope: outbound payment execution path
-freeze_id: BGS-FREEZE-PREPUBLIC-2026-03-22-A
 members_used:
   - BISS
   - UIC
@@ -455,11 +453,9 @@ members_used:
 overlays_used:
   - RIG
 member_version_refs:
-  BISS: ucc@1505204
-  UIC: uic@a997340
-  UCC: ucc@1505204
-  TIC: tic@5f125a3
-  RIG: ucc@1505204
+  ucc: ucc@1505204
+  uic: uic@a997340
+  tic: tic@5f125a3
 bgs_version_ref: bgs@12e5d16
 external_controls:
   iam_and_authorization: implemented

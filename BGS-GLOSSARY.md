@@ -70,10 +70,12 @@ PREFLIGHT
   artifacts.
   In BGS, preflight is primarily governed by `UIC`.
 
-PROFILE
+SLICE
   A named suite-level adoption claim describing which BGS members are
   used together and what can validly be claimed from that adoption.
-  Examples: `BGS-Execution`, `BGS-Governed-Verified`.
+  In BGS decision records this is carried in the `bgs_slice` field.
+  Examples: `BGS-Execution`, `BGS-Governed-Verified`,
+  `BGS-State-Modeled-Execution`.
 
 RIGOR
   The degree of internal implementation discipline applied to a system,

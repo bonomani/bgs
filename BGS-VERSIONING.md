@@ -32,12 +32,14 @@ BGS uses four versioning units:
    Immutable refs from the participating repos:
    - `../ucc/`
    - `../uic/`
+   - `../asm/`
    - `../tic/`
 
 3. Member-framework versions
    The effective versions of the frameworks used in a claim.
    At present, these are derived from the repo ref that contains them:
    - `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, `UCC` -> `ucc` ref
+   - `ASM` -> `asm` ref
    - `UIC` -> `uic` ref
    - `TIC` -> `tic` ref
 
@@ -82,6 +84,7 @@ A valid BGS claim must declare:
 Minimum member-version bindings:
 - if `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, or `UCC` are used, the claim
   must include an immutable `ucc` ref
+- if `ASM` is used, the claim must include an immutable `asm` ref
 - if `UIC` is used, the claim must include an immutable `uic` ref
 - if `TIC` is used, the claim must include an immutable `tic` ref
 
@@ -91,6 +94,7 @@ Recommended binding shape:
 bgs_version_ref: bgs@12e5d16
 member_version_refs:
   ucc: ucc@1505204
+  asm: asm@34eeafe
   uic: uic@a997340
   tic: tic@5f125a3
 ```
@@ -137,6 +141,7 @@ Level 4 — Floating composition
 
 They do NOT automatically imply:
 - which `ucc` version is required
+- which `asm` version is required
 - which `uic` version is required
 - which `tic` version is required
 
@@ -167,11 +172,16 @@ repo version controls all member semantics.
   effective version is the pinned `ucc` ref unless and until these
   frameworks are split into separate repos.
 
-6.4 Partial adoption
+6.4 ASM
+  If a claim uses `ASM`, it must pin the `asm` ref explicitly.
+  ASM-based modeled slices do not inherit their version from another repo.
+
+6.5 Partial adoption
   A claim may omit refs for unused member repos.
   Example:
   - a `BGS-Execution` claim does not need a `uic` or `tic` ref
   - a `BGS-Governed` claim does not need a `tic` ref
+  - a non-modeled slice does not need an `asm` ref
 
 ------------------------------------------------------------
 
@@ -194,6 +204,7 @@ composition_id: BGS-COMP-2026-03-A
 bgs_version_ref: bgs@12e5d16
 member_version_refs:
   ucc: ucc@1505204
+  asm: asm@34eeafe
   uic: uic@a997340
   tic: tic@5f125a3
 supported_profiles:
@@ -201,6 +212,8 @@ supported_profiles:
   - BGS-Verified
   - BGS-Governed
   - BGS-Governed-Verified
+  - BGS-State-Modeled-Execution
+  - BGS-State-Modeled-Governed
 notes:
   - UIC remains draft at this composition point
 ```
@@ -219,18 +232,17 @@ Current active freeze record:
 Interpretation:
 - while BGS remains private or draft, the suite-layer docs may continue
   to evolve
-- the member-repo refs frozen in `./BGS-FREEZE.yaml` are the default
-  composition baseline for claims and examples
-- changing that baseline requires a new freeze record or explicit
-  supersession
+- the freeze record protects numbering stability for published suite
+  identifiers during the draft phase
+- changing the numbering policy or superseding the freeze requires a new
+  freeze record
 
-This rule exists to prevent silent drift between:
-- the evolving suite layer in `./bgs/`
-- the member-framework refs used to claim BGS adoption
+This rule exists to prevent version-label reuse or renumbering while the
+suite is still drafting and its prose may continue to move.
 
 The freeze record does not remove the obligation to pin immutable refs in
 claims.
-It provides the shared pre-public default.
+It does not provide a default composition baseline.
 
 ------------------------------------------------------------
 
@@ -256,11 +268,10 @@ The following claims are misleading and should be avoided:
 -----------------
 
 ```yaml
-claim_id: config-agent-flow-01
-profile: BGS-Governed-Verified
+decision_id: config-agent-flow-01
+bgs_slice: BGS-Governed-Verified
 declared_scope: production config rollout workflow
 bgs_version_ref: bgs@12e5d16
-freeze_id: BGS-FREEZE-PREPUBLIC-2026-03-22-A
 member_version_refs:
   ucc: ucc@1505204
   uic: uic@a997340

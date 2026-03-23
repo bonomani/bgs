@@ -15,24 +15,17 @@ Do not use it as the authoritative definition of BGS. The authoritative
 docs remain `SUITE.md`, `SUITE-MAP.md`, `BGS-COMPLIANCE.md`, and the
 member-framework documents.
 
-## 1. Make the suite role map explicit everywhere
+## 1. Finish making the suite role map explicit in entry docs
 
 Edit:
 - `README.md`
-- `ONBOARDING.md`
-- `SUITE.md`
-- `SUITE-MAP.md`
-- `suite-map.json`
 
 Do:
-- add one consistent one-line role for each framework
-- keep `BGS` as the adoption framework
-- keep `BISS`, `UCC`, `UIC`, `TIC`, and `ASM` as distinct member roles
-- mirror the same role map in the machine-readable suite map
+- add a short role-map summary at the top entry point
+- make the first entry document reflect the same framework roles already used in `ONBOARDING.md`, `SUITE-MAP.md`, and `suite-map.json`
 
 Remove:
-- wording that implies all frameworks use the same claim type
-- wording that blurs adoption claims with execution or verification artifacts
+- entry-point navigation that assumes the reader will discover the role map only later
 
 Final text should say:
 - `BGS` decides adoption
@@ -42,81 +35,7 @@ Final text should say:
 - `TIC` governs verification
 - `ASM` governs state modeling
 
-## 2. Align naming and glossary guidance with the role map
-
-Edit:
-- `BGS-NAMING.md`
-- `BGS-GLOSSARY.md`
-
-Do:
-- include `ASM` everywhere the canonical member list appears
-- include `../asm/` everywhere the canonical member repo list appears
-- include the modeled BGS slices where claim/profile naming is enumerated
-- keep the naming docs clear that `BGS` is the suite and the others are member frameworks
-
-Remove:
-- member lists that omit `ASM`
-- repo lists that omit `../asm/`
-- naming examples that only reflect the older non-ASM slice set
-
-Final text should say:
-- `BGS` is the suite
-- `BISS`, `UIC`, `UCC`, `TIC`, and `ASM` are member frameworks with different roles
-- suite-level claim/profile wording covers the current slice set
-
-## 3. Normalize claim field names across templates and examples
-
-Edit:
-- `BGS-DECISION-TEMPLATE.md`
-- `BGS-VERSIONING.md`
-- `example-claims/BGS-Execution.md`
-- `example-claims/BGS-Governed-Verified.md`
-- `example-claims/claim-bgs-execution-001.md`
-- `example-claims/claim-bgs-governed-verified-001.md`
-- `example-claims/HOW-TO-AUTHOR-A-CLAIM.md`
-
-Do:
-- replace legacy field names with the normative BGS fields
-- make the examples mirror `BGS-COMPLIANCE.md`
-- make the decision-record template match the compliance model
-
-Remove:
-- `claim_id`
-- `profile`
-- decision-record uses of `applies_to_scope`
-- any old shortcut labels that are not part of the canonical claim shape
-
-Final text should use:
-- `decision_id`
-- `bgs_slice`
-- `declared_scope`
-- `bgs_version_ref`
-- `members_used`
-- `overlays_used`
-- `member_version_refs`
-- `external_controls`
-- `evidence_refs`
-
-## 4. Align the project decision template with the compliance model
-
-Edit:
-- `BGS-DECISION-TEMPLATE.md`
-- `BGS-COMPLIANCE.md`
-
-Do:
-- keep the project entry file fields distinct from the decision-record fields
-- make the decision-record section list the same mandatory fields as the compliance doc
-- make the example flow point to the correct artifact types
-
-Remove:
-- any drift between the decision template and `BGS-COMPLIANCE.md`
-
-Final text should say:
-- the entry file is a lightweight project pointer
-- the decision record is the actual BGS claim artifact
-- the two structures are related but not the same
-
-## 5. Update the UCC example payloads
+## 2. Update the UCC example payloads
 
 Edit:
 - `example-claims/ucc-declaration-result.json`
@@ -138,7 +57,7 @@ Final text should reflect:
 - completion
 - proof or diagnostics as appropriate
 
-## 6. Add explicit BISS evidence
+## 3. Add explicit BISS evidence
 
 Edit:
 - `BGS-COMPLIANCE.md`
@@ -157,29 +76,7 @@ Final text should say:
 - BISS must be evidenced, not just mentioned
 - evidence can be a classification table, decision record, or equivalent artifact
 
-## 7. Extend versioning and freeze rules to ASM-based slices
-
-Edit:
-- `BGS-VERSIONING.md`
-- `BGS-FREEZE.yaml`
-- example claim files
-
-Do:
-- add `../asm/` to the member-repo versioning model
-- add `ASM -> asm ref` to the member-version binding rules
-- include `asm` in the freeze record
-- make the versioning examples cover modeled slices cleanly
-
-Remove:
-- versioning examples that only reflect the older `ucc/uic/tic` set
-- any implication that ASM-based slices do not need their own pinned member ref
-
-Final text should show:
-- exact suite ref
-- exact member refs, including `asm` when `ASM` is used
-- explicit version binding in every relevant claim example
-
-## 8. Add canonical examples for the ASM-based claimable slices
+## 4. Add canonical examples for the ASM-based claimable slices
 
 Edit:
 - `example-claims/README.md`
@@ -197,7 +94,7 @@ Final text should show:
 - what a modeled execution claim bundle looks like
 - how `ASM` evidence is attached alongside `BISS`, `UIC`, `UCC`, and `TIC` artifacts where applicable
 
-## 9. Keep entry docs aligned with the canonical claim model
+## 5. Keep entry docs aligned with the canonical claim model
 
 Edit:
 - `README.md`
@@ -225,7 +122,7 @@ Remove:
 
 Final text should make the reader land on the same understanding from any entry point
 
-## 10. Keep risk docs aligned with the role map
+## 6. Keep risk docs aligned with the role map
 
 Edit:
 - `AI-RISK-CONTROL-MAP.md`
@@ -243,7 +140,7 @@ Remove:
 
 Final text should preserve the same role map while describing risks
 
-## 11. Clarify the relationship between `GAPS.md`, `STATUS.md`, and `TODO.md`
+## 7. Clarify the relationship between `GAPS.md`, `STATUS.md`, and `TODO.md`
 
 Edit:
 - `STATUS.md`

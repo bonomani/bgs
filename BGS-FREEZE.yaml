@@ -3,32 +3,21 @@ status: active
 phase: pre-public
 applies_until: first public BGS release or explicit supersession
 purpose: >
-  Freeze member-repo and member-framework refs while the BGS suite layer
-  is still private or draft and may continue to evolve.
+  Freeze version numbering and published identifier reuse while the BGS
+  suite layer is still private or draft and may continue to evolve.
 
-public_bgs_baseline_ref: bgs@12e5d16
-
-frozen_member_repo_refs:
-  ucc: ucc@1505204
-  uic: uic@a997340
-  tic: tic@5f125a3
-
-effective_member_framework_refs:
-  BISS: ucc@1505204
-  GIC: ucc@1505204
-  GCC: ucc@1505204
-  Basic: ucc@1505204
-  RIG: ucc@1505204
-  UIC: uic@a997340
-  UCC: ucc@1505204
-  TIC: tic@5f125a3
+numbering_scope:
+  - suite-layer version labels
+  - freeze identifiers
+  - published composition identifiers
 
 rules:
-  - Claims and examples should use the frozen member refs by default.
+  - Published numbering identifiers must not be renumbered or reused.
+  - New identifiers may be added, but previously published identifiers remain stable.
   - BGS suite-layer docs may continue to evolve during the private or draft phase.
-  - Changing the frozen member refs requires a new freeze record or explicit supersession.
-  - The freeze record does not replace the requirement to pin immutable refs in claims.
+  - Claims and examples must still pin their own immutable refs explicitly.
+  - The freeze record does not define a default composition baseline for claims.
 
 notes:
   - The suite layer remains under active drafting.
-  - This freeze stabilizes member-framework composition before public release.
+  - This freeze preserves numbering stability before public release.

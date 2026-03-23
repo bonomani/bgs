@@ -67,18 +67,20 @@ At suite level, the canonical framework names are:
 - `GCC`
 - `Basic`
 - `RIG`
+- `ASM`
 - `UIC`
 - `UCC`
 - `TIC`
 
 Canonical suite-level descriptions:
-- `BISS` = axis model
+- `BISS` = boundary classification framework
 - `GIC` = interaction foundation
 - `GCC` = contract foundation
 - `Basic` = rigor grade
 - `RIG` = rigor grade
-- `UIC` = preflight governance contract
-- `UCC` = execution and convergence contract
+- `ASM` = state model
+- `UIC` = preflight contract
+- `UCC` = execution contract
 - `TIC` = verification contract
 
 Interpretation rule:
@@ -93,6 +95,7 @@ Interpretation rule:
 At repository level, the current member repos are:
 - `../ucc/`
 - `../uic/`
+- `../asm/`
 - `../tic/`
 
 These repo names are not identical to the full set of suite-level member
@@ -107,6 +110,7 @@ Examples:
 - `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, and `UCC` are member frameworks
   currently authored in the `../ucc/` repo
 - `UIC` is a member framework currently authored in the `../uic/` repo
+- `ASM` is a member framework currently authored in the `../asm/` repo
 - `TIC` is a member framework currently authored in the `../tic/` repo
 
 Avoid:
@@ -130,14 +134,16 @@ Canonical claim wording:
 - `BGS-Verified`
 - `BGS-Governed`
 - `BGS-Governed-Verified`
+- `BGS-State-Modeled-Execution`
+- `BGS-State-Modeled-Governed`
 
 Canonical compliance wording:
-- "claims `BGS-Execution` for scope X"
-- "adopts BGS at profile `BGS-Governed-Verified`"
+- "claims slice `BGS-Execution` for scope X"
+- "adopts BGS at slice `BGS-Governed-Verified`"
 
 Avoid:
-- bare "BGS-compliant" with no profile
-- "UCC-compliant with BGS" when the intended claim is a suite-level profile
+- bare "BGS-compliant" with no slice
+- "UCC-compliant with BGS" when the intended claim is a suite-level slice
 
 ------------------------------------------------------------
 
@@ -146,12 +152,13 @@ Avoid:
 
 Prefer:
 - `suite` for BGS
-- `member framework` for BISS, GIC, GCC, Basic, RIG, UIC, UCC, TIC
-- `member repo` for `../ucc/`, `../uic/`, `../tic/`
-- `profile` for BGS adoption claims
+- `member framework` for BISS, GIC, GCC, Basic, RIG, ASM, UIC, UCC, TIC
+- `member repo` for `../ucc/`, `../uic/`, `../asm/`, `../tic/`
+- `slice` for BGS adoption claims and the `bgs_slice` field
 - `overlay` for `Basic` and `RIG`
 
 Avoid:
+- `profile` when the intended meaning is the current `bgs_slice` field
 - `stack` when the intended meaning is the broader BGS suite
 - `contract suite` as the umbrella name for everything in BGS
 - `UCC stack` when the intended meaning is BGS

@@ -1,7 +1,7 @@
 # BGS-Execution Example
 
-claim_id: claim-bgs-execution-001
-profile: BGS-Execution
+decision_id: claim-bgs-execution-001
+bgs_slice: BGS-Execution
 declared_scope: "UCC-based deployment workflow for the release pipeline"
 bgs_version_ref: bgs@12e5d16
 members_used:
@@ -27,4 +27,4 @@ Notes:
 - Chosen because the scope needs governed execution but not preflight
   gating or explicit verification.
 - Excluded `UIC` and `TIC` because the example is intentionally below the
-  governed-and-verified profile.
+  governed-and-verified slice.

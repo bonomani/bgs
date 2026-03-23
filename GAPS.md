@@ -93,7 +93,7 @@ GAP:  Resolved by `./BGS-VERSIONING.md` and the active freeze record
       - compatibility levels
       - how BGS refs relate to member-repo refs
       - how published composition records may be expressed
-      - the current pre-public frozen member refs
+      - the current pre-public numbering-freeze policy
 IMPACT:
 - suite composition is materially less ambiguous
 - version-bound suite claims are easier to interpret and audit
