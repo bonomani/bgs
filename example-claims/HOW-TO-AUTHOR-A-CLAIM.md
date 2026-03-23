@@ -25,6 +25,7 @@ Use this checklist when creating a new BGS adoption claim.
 
 6. Attach evidence.
 - Link to the preflight, execution, verification, or policy artifacts that support the claim.
+- If `BISS` is claimed, include a classification table, inventory, or equivalent boundary-classification record.
 - Evidence should match the selected slice.
 
 7. Check against the example bundle.
@@ -52,6 +53,7 @@ external_controls:
   rate limiting and budget control: implemented
   privacy and data-boundary control: delegated
 evidence_refs:
+  - ./biss-classification.md
   - ./some-evidence.md
   - ./some-result.json
 ```

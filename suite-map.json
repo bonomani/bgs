@@ -80,6 +80,7 @@
       "BISS -> ASM -> UCC",
       "BISS -> ASM -> UIC -> UCC"
     ],
+    "adoption_shapes_note": "These are member compositions. Claimable suite slices are defined in BGS-COMPLIANCE.md.",
     "suite_docs_by_role": {
       "README.md": "entry point and navigation",
       "SUITE.md": "suite semantics and composition rules",
@@ -90,7 +91,7 @@
       "AI-PROBLEM-MATRIX.md": "common AI-agent problem classes mapped to BGS",
       "BGS-COMPLIANCE.md": "decision rules and project entry requirements",
       "BGS-DECISION-TEMPLATE.md": "minimum project entry file and decision-record template",
-      "SCRIPT-QUALITY.md": "minimum, maximum, and recommended slices for scripts",
+      "SCRIPT-QUALITY.md": "minimum, maximum, and local-baseline versus claimable-slice guidance for scripts",
       "AI-RISK-CONTROL-MAP.md": "what BGS can govern directly and what still needs external controls",
       "example-claims/README.md": "canonical claim bundle"
     }

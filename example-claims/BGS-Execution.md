@@ -19,11 +19,15 @@ external_controls:
   privacy and data-boundary control: delegated
 evidence_refs:
   - ./claim-bgs-execution-001.md
-  - ./ucc-declaration-result.json
+  - ./biss-classification-execution.md
+  - ./ucc-declaration.json
+  - ./ucc-execution-result.json
 
 Notes:
 - This example shows a minimal execution claim with one operational repo ref.
-- The bundle includes a concrete execution result artifact and a claim stub.
+- The bundle includes explicit BISS classification evidence for the declared boundary.
+- The bundle includes a concrete UCC declaration, a concrete UCC result,
+  and a claim stub.
 - Chosen because the scope needs governed execution but not preflight
   gating or explicit verification.
 - Excluded `UIC` and `TIC` because the example is intentionally below the

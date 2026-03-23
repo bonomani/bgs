@@ -7,6 +7,11 @@ PURPOSE
 This document tracks what remains to be defined so that BGS can become a
 well-structured suite while keeping its member frameworks separate.
 
+Interpretation:
+- `GAPS.md` tracks major suite-definition gaps and their resolution state
+- `TODO.md` tracks smaller follow-up cleanup and alignment work that may remain after a gap is marked resolved
+- `STATUS.md` is a snapshot, not the authoritative gap ledger
+
 STATUS
 ------
 Active
@@ -47,7 +52,7 @@ GAP:  Resolved by `./SUITE-MAP.md` and `./suite-map.json`, which now
       - standalone vs compositional usage
       - semantic-base vs composition ordering
       - maturity signals by framework
-      - valid adoption profiles
+      - valid adoption slices
 IMPACT:
 - adoption paths are now materially clearer
 - architecture review ambiguity is reduced
@@ -70,7 +75,7 @@ GAP:  Resolved by `./BGS-GLOSSARY.md`, which now defines suite-level
       - rigor
       - member repo
       - member framework
-      - profile
+      - slice
       - overlay
       - external control
 IMPACT:
@@ -127,17 +132,17 @@ STATE: RESOLVED
 AREA: Compliance model
 GOAL: BGS should define what it means to claim suite-level adoption.
 GAP:  Resolved by `./BGS-COMPLIANCE.md`, which now defines:
-      - valid BGS adoption profiles
+      - valid BGS adoption slices
       - scope-based suite claims
       - required claim fields
-      - minimum evidence by profile
+      - minimum evidence by slice
       - invalid and misleading claims
       - required declaration of external controls
 IMPACT:
 - suite-level adoption claims are now materially clearer
 - incompatible or overbroad BGS claims are easier to reject
 RESOLUTION PATH:
-- keep profile and evidence rules aligned with suite evolution
+- keep slice and evidence rules aligned with suite evolution
 
 ------------------------------------------------------------
 

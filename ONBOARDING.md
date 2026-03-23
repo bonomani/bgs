@@ -34,13 +34,16 @@ Use cases:
 - `TIC` verifies governed behavior with explicit tests and oracles.
 - `Basic` and `RIG` are orthogonal rigor overlays.
 
-Common adoption shapes:
+Common member compositions:
 - `BISS -> ASM -> UCC` for state-modeled governed execution.
 - `BISS -> ASM -> UIC -> UCC` for state-modeled governed execution with preflight.
 - `BISS -> UCC` for minimal governed convergence.
 - `BISS -> UIC -> UCC` for governed execution.
 - `BISS -> UCC -> TIC` for verified execution.
 - `BISS -> UIC -> UCC -> TIC` for governed and verified execution.
+
+For claimable suite slices, see:
+- `./BGS-COMPLIANCE.md`
 
 What to use for what:
 - `README.md`: entry point and navigation.
@@ -52,7 +55,7 @@ What to use for what:
 - `AI-PROBLEM-MATRIX.md`: common AI-agent problem classes mapped to BGS.
 - `BGS-COMPLIANCE.md`: decision rules and project entry requirements.
 - `BGS-DECISION-TEMPLATE.md`: minimum project entry file and decision-record template.
-- `SCRIPT-QUALITY.md`: minimum, maximum, and recommended slices for scripts.
+- `SCRIPT-QUALITY.md`: minimum, maximum, and local-baseline versus claimable-slice guidance for scripts.
 - `AI-RISK-CONTROL-MAP.md`: what BGS can govern directly and what still needs external controls.
 - `example-claims/README.md`: canonical claim bundle.
 

@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "contract": "ucc",
+    "version": "2.0",
+    "id": "support-workflow-change-001",
+    "timestamp": "2026-03-22T10:15:00Z"
+  },
+  "declaration": {
+    "mode": "apply",
+    "target": "support-workflow-router",
+    "desired_state": {
+      "routing_mode": "approval_gated",
+      "legacy_handler": "fallback_only",
+      "audit_logging": "enabled"
+    }
+  }
+}

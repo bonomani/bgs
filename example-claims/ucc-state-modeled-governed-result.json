@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "contract": "ucc",
+    "version": "2.0",
+    "id": "payments-worker-state-001",
+    "timestamp": "2026-03-23T09:30:18Z",
+    "duration_ms": 18000
+  },
+  "observe": {
+    "observed_before": {
+      "service": "payments-worker",
+      "software_state": {
+        "profile_layer": "extended_operational",
+        "installation_state": "Configured",
+        "runtime_state": "NeverStarted",
+        "health_state": "Unknown",
+        "admin_state": "Enabled",
+        "dependency_state": "DepsReady",
+        "derived_states": [
+          "Present",
+          "Ready",
+          "NonOperational"
+        ]
+      }
+    },
+    "diff": {
+      "software_state": {
+        "runtime_state": {
+          "before": "NeverStarted",
+          "after": "Running"
+        },
+        "health_state": {
+          "before": "Unknown",
+          "after": "Healthy"
+        },
+        "derived_states": {
+          "before": [
+            "Present",
+            "Ready",
+            "NonOperational"
+          ],
+          "after": [
+            "Present",
+            "Ready",
+            "Operational",
+            "DependencyReady",
+            "DependencyOperational",
+            "FullyOperational"
+          ]
+        }
+      }
+    },
+    "observed_after": {
+      "service": "payments-worker",
+      "software_state": {
+        "profile_layer": "extended_operational",
+        "installation_state": "Configured",
+        "runtime_state": "Running",
+        "health_state": "Healthy",
+        "admin_state": "Enabled",
+        "dependency_state": "DepsReady",
+        "derived_states": [
+          "Present",
+          "Ready",
+          "Operational",
+          "DependencyReady",
+          "DependencyOperational",
+          "FullyOperational"
+        ]
+      }
+    }
+  },
+  "result": {
+    "observation": "ok",
+    "outcome": "changed",
+    "completion": "complete",
+    "proof": {
+      "state_schema": "../../asm/formal/software-state.schema.json",
+      "validator": "../../asm/tools/validate_software_state.py",
+      "reference_state": "../../asm/examples/valid-software-state.json"
+    }
+  }
+}

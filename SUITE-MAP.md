@@ -78,37 +78,37 @@ Interpretation rules:
 - hosted frameworks may later be split into separate repos without changing their suite identity
 - keep a framework inside a host repo while it shares release cadence,
   ownership, and change surface with the other hosted frameworks
-- split a framework into its own repo when any two of these become true: it needs an independent release cadence, it needs independent version refs for ordinary claims, it has a distinct owner or reviewer set, it has a distinct external audience or adoption profile, or it changes without the host repo's main lifecycle
+- split a framework into its own repo when any two of these become true: it needs an independent release cadence, it needs independent version refs for ordinary claims, it has a distinct owner or reviewer set, it has a distinct external audience or adoption slice, or it changes without the host repo's main lifecycle
 - keep a framework bundled when only one of those conditions is true and the shared host remains the lower-friction model
 
 ------------------------------------------------------------
 
-4. VALID ADOPTION PROFILES
---------------------------
+4. VALID ADOPTION SLICES
+------------------------
 
-Profile A — Classification only
+`BGS-Classification` — Classification only
 - `BISS`
 
-Profile B — Contract foundation
+`BGS-Foundation` — Contract foundation
 - `GIC`
 - `GCC`
 
-Profile C — Minimal governed convergence
+`BGS-Execution` — Minimal governed convergence
 - `BISS -> UCC`
 
-Profile D — Governed execution
+`BGS-Governed` — Governed execution
 - `BISS -> UIC -> UCC`
 
-Profile E — Verified execution
+`BGS-Verified` — Verified execution
 - `BISS -> UCC -> TIC`
 
-Profile F — Governed and verified execution
+`BGS-Governed-Verified` — Governed and verified execution
 - `BISS -> UIC -> UCC -> TIC`
 
-Profile G — Modeled governed execution
+`BGS-State-Modeled-Execution` — Modeled governed execution
 - `BISS -> ASM -> UCC`
 
-Profile H — Modeled governed execution with preflight
+`BGS-State-Modeled-Governed` — Modeled governed execution with preflight
 - `BISS -> ASM -> UIC -> UCC`
 
 Orthogonal overlay
@@ -171,15 +171,16 @@ Recommended adoption order by maturity and implementation risk:
 7. SCRIPT QUALITY SLICES
 ------------------------
 
-Recommended script baseline:
+Recommended local script baseline:
 - `Basic`
 
-Recommended install-script slice:
-- `Basic + UCC`
+Recommended claimable install-script slice:
+- `BGS-Execution`
 
 Upgrade path for install scripts:
-- add `UIC` when preflight gates or approvals are needed
-- add `TIC` when post-install verification or traceability is required
+- move to `BGS-Governed` when preflight gates or approvals are needed
+- move to `BGS-Verified` when post-install verification or traceability is required
+- move to `BGS-State-Modeled-Execution` or `BGS-State-Modeled-Governed` when explicit software-state modeling materially improves install, upgrade, repair, or recovery control
 
 `SCRIPT-QUALITY.md` gives the operational minimum and maximum for these script classes.
 

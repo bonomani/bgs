@@ -4,17 +4,18 @@ Boundary Governance Suite
 
 STATUS
 ------
-Operational guidance for script quality and recommended BGS slices.
+Operational guidance for script quality, local baselines, and claimable BGS slices.
 
 PURPOSE
 -------
 This document defines the minimum and maximum quality expectations for
-common script classes and the corresponding recommended BGS slice.
+common script classes and the corresponding local baselines and claimable BGS slices.
 
 It is intentionally practical:
 - minimum = the smallest safe baseline
 - maximum = the fully engineered version
-- recommended slice = the default BGS framing for the script type
+- recommended local baseline = the default member-framework or overlay guidance for the script type
+- recommended claimable BGS slice = the default suite slice when a formal BGS claim is warranted
 - upgrade triggers = when to move to the stronger slice
 
 ------------------------------------------------------------
@@ -43,8 +44,11 @@ Maximum
 - security controls for secrets and privilege boundaries
 - full automated test coverage
 
-Recommended BGS slice
+Recommended local baseline
 - `Basic`
+
+Recommended claimable BGS slice
+- none by default
 
 Upgrade to a stronger slice when
 - the script mutates shared state
@@ -85,8 +89,11 @@ Maximum
 - remediation instructions on partial failure
 - full test matrix across OS/version combinations
 
-Recommended BGS slice
+Recommended local baseline
 - `Basic + UCC`
+
+Recommended claimable BGS slice
+- `BGS-Execution`
 
 Upgrade to a stronger slice when
 - the install script needs preflight checks or policy gates
@@ -117,5 +124,7 @@ Install script
 - `UCC` is the execution layer for install or other consequential scripts.
 - `UIC` is added when there are preflight gates or approvals.
 - `TIC` is added when verification after execution matters.
+- `Basic` or `UCC` alone are local implementation choices, not standalone claimable BGS slices.
+- claim `BGS-Execution`, `BGS-Governed`, `BGS-Verified`, or `BGS-Governed-Verified` only when the script scope also satisfies the suite claim rules.
 
 END OF DOCUMENT

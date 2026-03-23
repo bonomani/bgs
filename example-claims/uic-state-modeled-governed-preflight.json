@@ -1,0 +1,27 @@
+{
+  "scope": "State-modeled preflight and convergence for the payments worker service",
+  "gates": [
+    {
+      "name": "target-state-admissibility",
+      "kind": "hard",
+      "status": "passed",
+      "evidence": "Desired software_state is valid against the ASM software profile and its executable validator."
+    },
+    {
+      "name": "maintenance-window",
+      "kind": "hard",
+      "status": "passed",
+      "evidence": "The change is scheduled inside the approved maintenance window."
+    },
+    {
+      "name": "dependency-readiness",
+      "kind": "soft",
+      "status": "passed",
+      "evidence": "Dependencies are declared DepsReady before execution begins."
+    }
+  ],
+  "resolved_policies": {
+    "may_execute": true,
+    "requires_followup": false
+  }
+}

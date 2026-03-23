@@ -128,6 +128,7 @@ standalone ASM implementation is not a claimable BGS slice.
 
   Minimum evidence:
   - declared execution scope
+  - BISS classification artifact covering the declared boundary or interaction inventory
   - at least one declaration/result example or schema-conforming artifact
   - evidence that UCC result semantics are used
   - pinned UCC reference
@@ -378,6 +379,7 @@ external_controls:
   privacy and data-boundary control: delegated
 evidence_refs:
   - ./docs/governance/bgs-decision.md
+  - ./docs/biss-classification.md
   - ./docs/API-CONTRACT.md
   - ./tests/
 ```
@@ -409,6 +411,7 @@ external_controls:
   privacy and data-boundary control: implemented
 evidence_refs:
   - ./docs/governance/bgs-decision.md
+  - ./docs/biss-classification.md
   - ./docs/preflight.json
   - ./tests/result.json
   - ./tests/oracle.md
@@ -464,6 +467,7 @@ external_controls:
   rate_limiting_and_budget_control: implemented
   privacy_and_data_boundary_control: delegated
 evidence_refs:
+  - classification/payment-boundary.md
   - preflight/gates/payment-approval.json
   - ucc/results/payment-run-042.json
   - tic/tests/payment-path.md

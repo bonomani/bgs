@@ -11,4 +11,4 @@ Choose the matrix that matches the concern:
 - `./AI-PROBLEM-MATRIX-LEGAL.md`
 
 If you want a recommendation first, read `./DECISION-TREE.md`.
-
+For claimable suite slices rather than local member adoption, read `./BGS-COMPLIANCE.md`.

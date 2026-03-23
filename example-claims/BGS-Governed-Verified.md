@@ -23,12 +23,16 @@ external_controls:
   privacy and data-boundary control: implemented
 evidence_refs:
   - ./claim-bgs-governed-verified-001.md
+  - ./biss-classification-governed-verified.md
   - ./uic-preflight.json
+  - ./ucc-governed-declaration.json
   - ./ucc-result.json
   - ./tic-oracle.md
 
 Notes:
 - This example shows the full governed-and-verified stack.
+- The bundle includes explicit BISS classification evidence for both the
+  preflight and execution boundaries in scope.
 - It includes preflight, execution, and verification artifacts in one declared scope.
 - Chosen because the scope needs preflight gating, governed execution,
   and explicit verification.

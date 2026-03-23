@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "contract": "ucc",
+    "version": "2.0",
+    "id": "release-pipeline-staging-001",
+    "timestamp": "2026-03-22T09:00:00Z"
+  },
+  "declaration": {
+    "mode": "apply",
+    "target": "staging-release-pipeline",
+    "desired_state": {
+      "environment": "staging",
+      "pipeline_version": "v13",
+      "config_map_version": "release-pipeline-v13",
+      "smoke_tests": "must_pass_before_acceptance"
+    }
+  }
+}

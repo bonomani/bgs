@@ -1,13 +1,44 @@
 {
-  "scope": "Prompt-to-change workflow for the support automation tool",
-  "observed_state": "Support workflow branch currently routes requests through legacy handler",
-  "desired_state": "Support workflow branch routes requests through the new approval gate",
-  "diff": [
-    "workflow-router updated to include approval gate",
-    "legacy handler retained for fallback path"
-  ],
-  "execution_result": {
-    "status": "converged",
-    "notes": "Declared workflow change converged with one non-blocking follow-up."
+  "meta": {
+    "contract": "ucc",
+    "version": "2.0",
+    "id": "support-workflow-change-001",
+    "timestamp": "2026-03-22T10:16:12Z",
+    "duration_ms": 7200
+  },
+  "observe": {
+    "observed_before": {
+      "routing_mode": "legacy_direct",
+      "legacy_handler": "primary",
+      "audit_logging": "disabled"
+    },
+    "diff": {
+      "routing_mode": {
+        "before": "legacy_direct",
+        "after": "approval_gated"
+      },
+      "legacy_handler": {
+        "before": "primary",
+        "after": "fallback_only"
+      },
+      "audit_logging": {
+        "before": "disabled",
+        "after": "enabled"
+      }
+    },
+    "observed_after": {
+      "routing_mode": "approval_gated",
+      "legacy_handler": "fallback_only",
+      "audit_logging": "enabled"
+    }
+  },
+  "result": {
+    "observation": "ok",
+    "outcome": "changed",
+    "completion": "complete",
+    "proof": {
+      "workflow_router_config": "approval-gate-enabled",
+      "audit_log_sink": "support-audit-default"
+    }
   }
 }

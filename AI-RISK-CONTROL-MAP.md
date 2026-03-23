@@ -12,12 +12,12 @@ PURPOSE
 This document explains:
 - which AI-agent risk classes BGS can govern directly
 - which risk classes require hybrid treatment with external controls
-- where common mitigations belong across BISS, UIC, UCC, TIC, Basic/RIG,
+- where common mitigations belong across BISS, UIC, UCC, ASM, TIC, Basic/RIG,
   and external systems
 
 This document exists to prevent overclaim.
-BGS governs boundary interactions, execution constraints, verification,
-traceability, and explicit gates.
+BGS governs boundary classification, preflight, execution constraints,
+state modeling, verification, traceability, and explicit gates.
 BGS does not replace IAM, sandboxing, DLP, network controls, privacy
 enforcement, token revocation, or legal governance.
 
@@ -88,9 +88,12 @@ Solution compatibility:
 ---------------------------
 
 Recommended high-risk composition:
+- BISS for explicit boundary classification
 - external sandboxing, IAM, rate limiting, and privacy controls
 - UIC for explicit gates, approvals, and preflight policy
 - UCC for bounded execution and explicit results
+- ASM when admissible target states, coherence rules, or transition legality
+  must be explicit
 - TIC for oracles, counterevidence, and verification
 - Basic or RIG for implementation discipline
 

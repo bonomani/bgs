@@ -7,6 +7,11 @@ It is intentionally simpler than the normative suite documents.
 It assumes AI-assisted development as the default context for software work.
 It recommends what should be implemented first.
 
+Interpretation rule:
+- when this guide names member frameworks such as `UCC` or `UIC + UCC`, it is describing a local implementation choice
+- when this guide names `BGS-...`, it is describing a claimable suite slice
+- all suite-level claims still follow `./BGS-COMPLIANCE.md`
+
 Start here:
 1. What kind of software is this?
 2. Does it change external state?
@@ -104,7 +109,8 @@ Recommendation:
 - Add `UIC` only if approvals or gates matter
 
 2.4 Public product with normal API
-- Implement `UCC`
+- Implement `UCC` locally
+- Claim `BGS-Execution` only when the boundary is explicitly classified with `BISS`
 - Add `TIC` if API behavior needs strong test or oracle discipline
 
 2.5 Download manager or task runner
@@ -119,7 +125,8 @@ Recommendation:
 - Use `BGS-Governed` when preflight control matters
 
 2.7 Security-sensitive automation
-- Implement `UIC + UCC`
+- Implement `UIC + UCC` locally
+- Claim `BGS-Governed` or `BGS-Governed-Verified` only when `BISS` classification is explicit
 - Add `TIC` for audit-friendly verification
 - Use `BGS-Governed` or `BGS-Governed-Verified`
 
@@ -136,6 +143,10 @@ Recommendation:
 
 3. MODULE SELECTION
 -------------------
+
+Interpretation rule:
+- this section recommends member-framework adoption, not claimable BGS slices by itself
+- map the resulting member set to the smallest valid `BGS-...` slice in `./BGS-COMPLIANCE.md` when a suite-level claim is needed
 
 If you need only one thing:
 - classification -> implement `BISS`

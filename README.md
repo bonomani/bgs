@@ -9,6 +9,14 @@ It defines the suite's common objective, naming, composition, versioning,
 compliance, and navigation rules without merging the member frameworks or
 moving their files.
 
+Role map:
+- `BGS` = adoption decision framework
+- `BISS` = boundary classification framework
+- `UCC` = execution contract
+- `UIC` = preflight contract
+- `TIC` = verification contract
+- `ASM` = state model
+
 Start here:
 1. `./SUITE.md`
 2. `./SUITE-MAP.md`

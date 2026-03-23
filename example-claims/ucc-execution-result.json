@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "contract": "ucc",
+    "version": "2.0",
+    "id": "release-pipeline-staging-001",
+    "timestamp": "2026-03-22T09:00:21Z",
+    "duration_ms": 21000
+  },
+  "observe": {
+    "observed_before": {
+      "environment": "staging",
+      "pipeline_version": "v12",
+      "config_map_version": "release-pipeline-v12",
+      "smoke_tests": "not_run"
+    },
+    "diff": {
+      "pipeline_version": {
+        "before": "v12",
+        "after": "v13"
+      },
+      "config_map_version": {
+        "before": "release-pipeline-v12",
+        "after": "release-pipeline-v13"
+      }
+    },
+    "observed_after": {
+      "environment": "staging",
+      "pipeline_version": "v13",
+      "config_map_version": "release-pipeline-v13",
+      "smoke_tests": "passed"
+    }
+  },
+  "result": {
+    "observation": "ok",
+    "outcome": "changed",
+    "completion": "complete",
+    "proof": {
+      "deployment_manifest": "release-pipeline-v13",
+      "smoke_tests": "passed"
+    }
+  }
+}
