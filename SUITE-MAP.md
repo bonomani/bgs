@@ -66,6 +66,7 @@ Repository hosting rule:
 | --- | --- |
 | `../ucc/` | `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, `UCC` |
 | `../uic/` | `UIC` |
+| `../asm/` | `ASM` |
 | `../tic/` | `TIC` |
 
 Interpretation rules:
@@ -100,6 +101,15 @@ Profile E — Verified execution
 
 Profile F — Governed and verified execution
 - `BISS -> UIC -> UCC -> TIC`
+
+Profile G — State modeling
+- `ASM`
+
+Profile H — Modeled governed execution
+- `ASM -> UCC`
+
+Profile I — Modeled governed execution with preflight
+- `ASM -> UIC -> UCC`
 
 Orthogonal overlay
 - `Basic` or `RIG` may be applied to any of the above implementations

@@ -52,12 +52,12 @@ GOVERNANCE
 MEMBER FRAMEWORK
   A semantic framework used by the suite.
   The canonical BGS member frameworks are:
-  `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, `UIC`, `UCC`, `TIC`.
+  `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, `UIC`, `UCC`, `ASM`, `TIC`.
 
 MEMBER REPO
   A repository that contains one or more member frameworks participating
   in the suite layer.
-  The current BGS member repos are `../ucc/`, `../uic/`, and `../tic/`.
+  The current BGS member repos are `../ucc/`, `../uic/`, `../asm/`, and `../tic/`.
 
 OVERLAY
   A suite-level layer that augments discipline or quality without

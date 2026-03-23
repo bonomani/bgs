@@ -40,6 +40,8 @@ BGS defines:
   controls must be explained together
 - the expectation that member repos can evolve independently when their
   lifecycle, ownership, or release needs differ
+- the default boundary that BGS applies to projects and workflows, not
+  to the BGS suite itself unless a separate explicit decision says so
 
 The canonical membership matrix, repo-hosting map, adoption profiles,
 and split policy live in `./SUITE-MAP.md`.
@@ -206,7 +208,17 @@ SG-16 Helpful default behaviors
   - make observed state, desired state, diff, and result explicit
   - classify execution results in a closed result model
 
-4.6 TIC
+4.6 ASM
+  Authority:
+  `../asm/README.md`
+
+  Role in BGS:
+  - define a generic formal state model for systems
+  - represent atomic and composite states
+  - define coherence rules and allowed transitions
+  - support software and non-software governed objects
+
+4.7 TIC
   Authority:
   `../tic/SPEC.md`
 

@@ -20,8 +20,8 @@ Read this first:
 
 Core concepts:
 - `BGS` is the suite.
-- `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, `UIC`, `UCC`, and `TIC` are member frameworks.
-- `../ucc/`, `../uic/`, and `../tic/` are member repos.
+- `BISS`, `GIC`, `GCC`, `Basic`, `RIG`, `UIC`, `UCC`, `ASM`, and `TIC` are member frameworks.
+- `../ucc/`, `../uic/`, `../asm/`, and `../tic/` are member repos.
 - One repo may host multiple member frameworks.
 - Suite membership is semantic; repo membership is physical.
 
@@ -30,6 +30,7 @@ Use cases:
 - `GIC` and `GCC` provide the semantic foundation.
 - `UIC` governs preflight decisions before execution.
 - `UCC` governs declaration-driven execution and convergence.
+- `ASM` governs formal state modeling, composition, and transitions.
 - `TIC` verifies governed behavior with explicit tests and oracles.
 - `Basic` and `RIG` are orthogonal rigor overlays.
 

@@ -53,8 +53,8 @@
     ],
     "core_concepts": {
       "suite": "BGS",
-      "member_frameworks": ["BISS", "GIC", "GCC", "Basic", "RIG", "UIC", "UCC", "TIC"],
-      "member_repos": ["../ucc/", "../uic/", "../tic/"],
+      "member_frameworks": ["BISS", "GIC", "GCC", "Basic", "RIG", "UIC", "UCC", "ASM", "TIC"],
+      "member_repos": ["../ucc/", "../uic/", "../asm/", "../tic/"],
       "hosting_rule": "suite membership is semantic; repo membership is physical"
     },
     "use_cases": {
@@ -62,6 +62,7 @@
       "GIC_GCC": "provide the semantic foundation",
       "UIC": "governs preflight decisions before execution",
       "UCC": "governs declaration-driven execution and convergence",
+      "ASM": "governs formal state modeling, composition, and allowed transitions",
       "TIC": "verifies governed behavior with explicit tests and oracles",
       "Basic_RIG": "orthogonal rigor overlays"
     },
@@ -69,7 +70,10 @@
       "BISS -> UCC",
       "BISS -> UIC -> UCC",
       "BISS -> UCC -> TIC",
-      "BISS -> UIC -> UCC -> TIC"
+      "BISS -> UIC -> UCC -> TIC",
+      "ASM",
+      "ASM -> UCC",
+      "ASM -> UIC -> UCC"
     ],
     "suite_docs_by_role": {
       "README.md": "entry point and navigation",
@@ -91,6 +95,10 @@
     {
       "repo": "../uic/",
       "hosts": ["UIC"]
+    },
+    {
+      "repo": "../asm/",
+      "hosts": ["ASM"]
     },
     {
       "repo": "../tic/",
@@ -229,6 +237,22 @@
       },
       "authoritative_docs": [
         "../tic/SPEC.md"
+      ]
+    },
+    {
+      "id": "asm",
+      "name": "ASM",
+      "kind": "state_model",
+      "standalone": true,
+      "semantic_base": [],
+      "composition_with": ["ucc", "uic", "tic", "biss", "basic", "rig"],
+      "primary_use": "Define formal state modeling, composition, coherence, and allowed transitions.",
+      "maturity": {
+        "level": "new_member",
+        "note": "New generic state-model framework."
+      },
+      "authoritative_docs": [
+        "../asm/README.md"
       ]
     }
   ],

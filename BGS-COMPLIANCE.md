@@ -72,6 +72,12 @@ CR-9 Decision and reason must be readable by agents
   The project entry file must be easy for an AI agent to read first and
   must clearly state which BGS guidance to apply next.
 
+CR-10 No implicit self-application
+  BGS does not apply to its own suite files, templates, or guidance by
+  default. Any use of BGS to govern the BGS suite itself must be an
+  explicit, separately recorded decision with its own scope, rationale,
+  and evidence.
+
 ------------------------------------------------------------
 
 2. VALID BGS SLICES

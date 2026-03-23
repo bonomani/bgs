@@ -20,3 +20,4 @@ Start here:
 8. `./BGS-COMPLIANCE.md`
 9. `./BGS-DECISION-TEMPLATE.md`
 10. `./SCRIPT-QUALITY.md`
+11. `../asm/README.md`
