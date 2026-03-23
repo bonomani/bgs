@@ -14,6 +14,8 @@ Interpretation rule:
 - choose the target slice from the project's needs and risks first, not
   from the repo as-found
 - make the suite-level claim only after the target slice is evidenced
+- when governed behavior depends on meaningful lifecycle or transition
+  state, default toward an `ASM`-based target slice
 
 Start here:
 1. What kind of software is this?
@@ -62,6 +64,9 @@ If the project needs:
 
 Recommendation:
 - `BGS-Execution`
+- move toward `BGS-State-Modeled-Execution` when execution depends on
+  installation, configuration, runtime, readiness, repair, upgrade, or
+  recovery state rather than on a single flat target value
 
 If the project needs:
 - explicit desired and observed state semantics
@@ -106,10 +111,14 @@ Recommendation:
 - Implement a lightweight baseline
 - Use `BISS` for explicit interaction classification
 - Use `UCC` if request/result discipline matters
+- Add `ASM` only when the domain has meaningful lifecycle or transition
+  state beyond ordinary request handling
 
 2.3 Internal business app
 - Implement `BISS` and `UCC`
 - Add `UIC` only if approvals or gates matter
+- Prefer `ASM` once business operations depend on explicit workflow or
+  lifecycle state rather than only on imperative actions
 
 2.4 Public product with normal API
 - Implement `UCC` locally
@@ -120,23 +129,31 @@ Recommendation:
 - Implement `BISS` and `UCC`
 - Add `TIC` for verification
 - Add `UIC` only if downloads require approval or policy checks
+- Prefer `ASM` when job lifecycle, retry state, readiness, or recovery
+  semantics materially affect admissible execution
 
 2.6 AI-assisted workflow
 - Implement `BISS + UCC` as the minimum
 - Add `UIC` if the AI must pass gates before acting
 - Add `TIC` if you need explicit verification
 - Use `BGS-Governed` when preflight control matters
+- Prefer `ASM` when the workflow depends on explicit staged state,
+  admissible targets, or transition legality
 
 2.7 Security-sensitive automation
 - Implement `UIC + UCC` locally
 - Claim `BGS-Governed` or `BGS-Governed-Verified` only when `BISS` classification is explicit
 - Add `TIC` for audit-friendly verification
 - Use `BGS-Governed` or `BGS-Governed-Verified`
+- Prefer `BGS-State-Modeled-Governed` when approvals, execution, or
+  verification depend on explicit system state and allowed transitions
 
 2.8 Risk-managed or compliance-sensitive system
 - Implement `BGS-Governed-Verified`
 - Use claims, immutable refs, and evidence
 - Keep external controls explicit
+- Prefer an `ASM`-based slice when the scope is stateful across install,
+  configure, run, degrade, recover, or verify phases
 
 2.9 Multi-repo or multi-tool platform
 - Implement the smallest BGS slice that coordinates the handoffs
@@ -146,6 +163,8 @@ Selection rule:
 - pick the smallest sufficient target slice for the scope first
 - then implement and evidence it
 - do not back-fit the target slice only from the current repo state
+- for governed systems with meaningful lifecycle or transition state,
+  start by testing whether an `ASM`-based slice is the right target
 
 ------------------------------------------------------------
 
@@ -162,15 +181,23 @@ If you need only one thing:
 - execution semantics -> implement `UCC`
 - preflight approval -> implement `UIC`
 - verification -> implement `TIC`
+- formal state modeling -> implement `ASM`
 - rigor overlay -> add `Basic` or `RIG`
 
 If you need two things:
 - classification + execution -> implement `BISS + UCC`
 - execution + verification -> implement `UCC + TIC`
 - preflight + execution -> implement `UIC + UCC`
+- state modeling + execution -> implement `ASM + UCC`
+- state modeling + preflight -> implement `ASM + UIC`
 
 If you need full governance:
 - implement `BISS + UIC + UCC + TIC`
+
+If you need governed stateful execution:
+- implement `BISS + ASM + UCC`
+- add `UIC` when admissible targets or gates depend on the state model
+- add `TIC` when the resulting state must be explicitly verified
 
 ------------------------------------------------------------
 

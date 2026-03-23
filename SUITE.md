@@ -55,6 +55,9 @@ Interpretation rule:
   design for the declared scope and risks
 - a BGS claim is made only after the required artifacts and evidence for
   that slice exist
+- when the declared scope depends on meaningful lifecycle, readiness,
+  runtime, recovery, or transition semantics, BGS should orient the
+  target slice toward `ASM`
 
 ------------------------------------------------------------
 
@@ -266,6 +269,12 @@ CR-6 ASM remains a state-model layer
   When ASM is composed with UIC or UCC, it supplies explicit state
   vocabulary, coherence rules, and transition semantics.
   It does not replace preflight or execution semantics.
+
+CR-6a Stateful governed systems default toward ASM
+  When governed execution or preflight depends on explicit installation,
+  configuration, runtime, readiness, repair, upgrade, recovery, or
+  allowed-transition semantics, the suite should treat ASM as the
+  default state layer rather than as a purely optional late addition.
 
 CR-7 Partial adoption is valid
   A stack may adopt any subset or composition named in Section 6, as long

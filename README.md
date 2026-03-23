@@ -23,6 +23,11 @@ Selection rule:
 - then implement the required member artifacts and evidence
 - claim the slice only when that evidence exists
 
+State-model rule:
+- when the declared scope depends on meaningful software or system state
+  such as installation, configuration, runtime, readiness, recovery, or
+  transition legality, orient the target slice toward `ASM`
+
 Start here:
 1. `./SUITE.md`
 2. `./SUITE-MAP.md`

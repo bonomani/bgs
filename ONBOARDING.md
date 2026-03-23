@@ -10,6 +10,8 @@ Purpose:
 - BGS slice selection is prescriptive first: choose the smallest
   sufficient target slice for the scope and risk, then implement and
   evidence it, then claim it.
+- For governed systems with meaningful lifecycle or transition state,
+  test an `ASM`-based slice first.
 
 Read this first:
 1. `./README.md`
@@ -44,6 +46,11 @@ Common member compositions:
 - `BISS -> UIC -> UCC` for governed execution.
 - `BISS -> UCC -> TIC` for verified execution.
 - `BISS -> UIC -> UCC -> TIC` for governed and verified execution.
+
+Orientation rule:
+- if the scope depends on installation, configuration, runtime,
+  readiness, recovery, or allowed transitions, prefer the `ASM`-based
+  compositions before the flatter `UCC`-only variants
 
 For claimable suite slices, see:
 - `./BGS-COMPLIANCE.md`

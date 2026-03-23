@@ -117,7 +117,10 @@ Orthogonal overlay
 Interpretation rules:
 - no slice is mandatory for every adopter
 - `ASM` remains a standalone framework, but standalone ASM is not a claimable BGS adoption slice
-- `ASM` may precede `UIC` and `UCC` when explicit state semantics are part of the declared scope
+- `ASM` should precede `UIC` and `UCC` when explicit state semantics are part of the declared scope
+- stateful governed systems should test the `ASM`-based slices first when
+  installation, configuration, runtime, readiness, recovery, or allowed
+  transitions materially affect admissible behavior
 - `UIC` is not required for `UCC`, but precedes `UCC` when both are used
 - `TIC` may verify `UIC`, `UCC`, or other governed targets
 - `Basic` and `RIG` do not change interaction type
@@ -153,7 +156,7 @@ It is a suite of frameworks that can be used alone or composed explicitly.
 | BISS | Foundation | Use as the classification lens early. |
 | GIC and GCC | Foundation | Use as the semantic floor for explicit interactions and contracts. |
 | UCC | Strong operational baseline | Best first operational target when you need governed execution now. |
-| ASM | New member | Add when explicit state vocabularies, coherence rules, or transition models materially improve execution or supervision clarity. |
+| ASM | New member | Default toward ASM when governed scopes depend on lifecycle state, coherence, readiness, recovery, or transition legality. |
 | TIC | Specified, suite integration partial | Add when explicit verification and traceable oracles matter. |
 | UIC | Draft | Add after the operational baseline is clear, when you need governed preflight, approvals, or policy shaping. |
 | Basic and RIG | Foundation and orthogonal | Apply continuously as implementation discipline overlays. |
@@ -161,7 +164,7 @@ It is a suite of frameworks that can be used alone or composed explicitly.
 Recommended adoption order by maturity and implementation risk:
 1. `BISS` for classification
 2. `UCC` for operationally governed execution
-3. `ASM` when explicit state modeling or transition legality materially improves the declared scope
+3. `ASM` by default when explicit state modeling or transition legality materially affects the declared scope
 4. `TIC` for explicit verification
 5. `UIC` when preflight governance is required
 6. `Basic` or `RIG` as orthogonal rigor overlays throughout
@@ -180,7 +183,7 @@ Recommended claimable install-script slice:
 Upgrade path for install scripts:
 - move to `BGS-Governed` when preflight gates or approvals are needed
 - move to `BGS-Verified` when post-install verification or traceability is required
-- move to `BGS-State-Modeled-Execution` or `BGS-State-Modeled-Governed` when explicit software-state modeling materially improves install, upgrade, repair, or recovery control
+- move to `BGS-State-Modeled-Execution` or `BGS-State-Modeled-Governed` by default when install, configure, run, upgrade, repair, or recovery control depends on explicit software-state modeling
 
 `SCRIPT-QUALITY.md` gives the operational minimum and maximum for these script classes.
 

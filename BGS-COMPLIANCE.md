@@ -29,6 +29,9 @@ Interpretation rule:
   and evidence exist
 - projects should choose the target slice first, then implement and
   evidence it, then claim it
+- when the declared scope depends on meaningful lifecycle, readiness,
+  runtime, recovery, or transition semantics, the target slice should
+  default toward an `ASM`-based slice
 
 ------------------------------------------------------------
 
@@ -43,6 +46,14 @@ CR-1a Slice selection is need-driven
   The selected BGS slice must be the smallest sufficient slice for the
   declared scope, risk, and governance need. It must not be chosen only
   by describing the repo as-found.
+
+CR-1b Stateful governed scopes should orient toward ASM
+  When the declared scope depends on explicit installation,
+  configuration, runtime, readiness, repair, upgrade, recovery, or
+  transition legality semantics, the target slice should use
+  `BGS-State-Modeled-Execution` or `BGS-State-Modeled-Governed` unless
+  the project can justify why a flat non-ASM execution model is
+  sufficient.
 
 CR-2 Scope must be declared
   Every BGS decision must declare the scope to which the decision
@@ -205,6 +216,11 @@ standalone ASM implementation is not a claimable BGS slice.
   - everything required for `BGS-Governed`
   - everything required for `BGS-Verified`
 
+  Orientation note:
+  - this slice remains valid, but stateful governed systems should
+    prefer `BGS-State-Modeled-Governed` when preflight or execution
+    depend on explicit state axes, coherence, or transition legality
+
 2.7 BGS-State-Modeled-Execution
   Required members:
   - `BISS`
@@ -351,6 +367,8 @@ If only some of those patterns apply, adopt BGS partially:
 - implement only the member frameworks that solve the actual problem
 - claim the slice only once the required evidence exists
 - skip concepts that add overhead without direct utility
+- for stateful governed workflows, treat `ASM` as the default candidate
+  state layer rather than as a late optional add-on
 
 Examples of partial use:
 - `BISS + ASM + UCC` for state-modeled governed execution
