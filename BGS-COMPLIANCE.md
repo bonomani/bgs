@@ -83,6 +83,9 @@ CR-10 No implicit self-application
 2. VALID BGS SLICES
 ---------------------
 
+Standalone use of `ASM` remains valid as framework adoption, but a
+standalone ASM implementation is not a claimable BGS slice.
+
 2.1 BGS-Classification
   Required members:
   - `BISS`
@@ -188,6 +191,49 @@ CR-10 No implicit self-application
   - everything required for `BGS-Governed`
   - everything required for `BGS-Verified`
 
+2.7 BGS-State-Modeled-Execution
+  Required members:
+  - `BISS`
+  - `ASM`
+  - `UCC`
+
+  Optional overlays:
+  - `Basic`
+  - `RIG`
+
+  Allowed decision:
+  - execution is governed by explicit declaration and result semantics,
+    and the governed state model is defined by ASM-compatible state
+    axes, coherence rules, and transition legality
+
+  Minimum evidence:
+  - everything required for `BGS-Execution`
+  - a state-model document, profile, or equivalent state specification
+  - at least one concrete state artifact, schema, or executable validator
+  - pinned ASM reference
+
+2.8 BGS-State-Modeled-Governed
+  Required members:
+  - `BISS`
+  - `ASM`
+  - `UIC`
+  - `UCC`
+
+  Optional overlays:
+  - `Basic`
+  - `RIG`
+
+  Allowed decision:
+  - governed preflight and governed execution both rely on an explicit
+    ASM-governed state model for admissible targets, coherence, or
+    transition legality
+
+  Minimum evidence:
+  - everything required for `BGS-State-Modeled-Execution`
+  - UIC preflight artifacts or equivalent target-state gate results
+  - explicit evidence of hard or soft gate behavior where applicable
+  - pinned UIC reference
+
 ------------------------------------------------------------
 
 3. REQUIRED DECISION FIELDS
@@ -265,7 +311,7 @@ Template:
 # BGS Entry
 
 project_name: example-project
-bgs_slice: Light BGS
+bgs_slice: BGS-Execution
 decision_reason: "AI-assisted workflow needs explicit request/result separation"
 applies_to_scope: "backend task execution"
 decision_record_path: "./docs/governance/bgs-decision.md"
@@ -293,6 +339,8 @@ If only some of those patterns apply, adopt BGS partially:
 - skip concepts that add overhead without direct utility
 
 Examples of partial use:
+- `BISS + ASM + UCC` for state-modeled governed execution
+- `BISS + ASM + UIC + UCC` when preflight and execution both depend on an explicit state model
 - `BISS` only for classification
 - `BISS + UCC` for minimal governed convergence
 - `BISS + UCC + TIC` for verified execution
@@ -377,6 +425,8 @@ The following decisions are invalid:
 - `BGS-Verified` without `TIC`
 - `BGS-Governed` without both `UIC` and `UCC`
 - `BGS-Execution` without `UCC`
+- `BGS-State-Modeled-Execution` without `BISS`, `ASM`, and `UCC`
+- `BGS-State-Modeled-Governed` without `BISS`, `ASM`, `UIC`, and `UCC`
 - selecting `RIG` alone as a BGS slice
 - claiming full AI safety solely from BGS adoption
 - claiming prompt injection, privacy, or privilege risk are eliminated

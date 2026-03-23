@@ -35,6 +35,8 @@ Use cases:
 - `Basic` and `RIG` are orthogonal rigor overlays.
 
 Common adoption shapes:
+- `BISS -> ASM -> UCC` for state-modeled governed execution.
+- `BISS -> ASM -> UIC -> UCC` for state-modeled governed execution with preflight.
 - `BISS -> UCC` for minimal governed convergence.
 - `BISS -> UIC -> UCC` for governed execution.
 - `BISS -> UCC -> TIC` for verified execution.
@@ -44,12 +46,15 @@ What to use for what:
 - `README.md`: entry point and navigation.
 - `SUITE.md`: suite semantics and composition rules.
 - `SUITE-MAP.md`: canonical matrix, hosting map, and split policy.
+- `STATUS.md`: stable versus draft snapshot.
 - `AI-AGENT-WORKFLOW.md`: progressive narrowing workflow for AI agents.
 - `BGS-VERSIONING.md`: immutable refs and compatibility rules.
 - `AI-PROBLEM-MATRIX.md`: common AI-agent problem classes mapped to BGS.
 - `BGS-COMPLIANCE.md`: decision rules and project entry requirements.
+- `BGS-DECISION-TEMPLATE.md`: minimum project entry file and decision-record template.
 - `SCRIPT-QUALITY.md`: minimum, maximum, and recommended slices for scripts.
 - `AI-RISK-CONTROL-MAP.md`: what BGS can govern directly and what still needs external controls.
+- `example-claims/README.md`: canonical claim bundle.
 
 For fit, non-fit, and partial adoption rules, see:
 - `./SUITE.md`

@@ -27,9 +27,11 @@
       "../ucc/governance/BISS.txt",
       "../uic/contract-semantics/UIC.txt",
       "../ucc/execution-semantics/UCC-EXECUTION.txt",
+      "../asm/README.md",
       "../tic/SPEC.md",
       "./AI-RISK-CONTROL-MAP.md",
-      "./GAPS.md"
+      "./GAPS.md",
+      "./SCRIPT-QUALITY.md"
     ],
     "machine": [
       "./suite-map.json",
@@ -40,16 +42,20 @@
       "./BGS-FREEZE.yaml",
       "./BGS-COMPLIANCE.md",
       "./AI-RISK-CONTROL-MAP.md",
-      "./GAPS.md"
+      "./GAPS.md",
+      "./SCRIPT-QUALITY.md"
     ]
   },
   "onboarding": {
     "read_first": [
       "./README.md",
       "./SUITE-MAP.md",
-      "./STATUS.md",
+      "./AI-AGENT-WORKFLOW.md",
+      "./DECISION-TREE.md",
+      "./AI-PROBLEM-MATRIX.md",
       "./BGS-COMPLIANCE.md",
-      "./example-claims/README.md"
+      "./BGS-DECISION-TEMPLATE.md",
+      "./SCRIPT-QUALITY.md"
     ],
     "core_concepts": {
       "suite": "BGS",
@@ -71,18 +77,21 @@
       "BISS -> UIC -> UCC",
       "BISS -> UCC -> TIC",
       "BISS -> UIC -> UCC -> TIC",
-      "ASM",
-      "ASM -> UCC",
-      "ASM -> UIC -> UCC"
+      "BISS -> ASM -> UCC",
+      "BISS -> ASM -> UIC -> UCC"
     ],
     "suite_docs_by_role": {
       "README.md": "entry point and navigation",
       "SUITE.md": "suite semantics and composition rules",
       "SUITE-MAP.md": "canonical matrix, hosting map, and split policy",
       "STATUS.md": "stable versus draft snapshot",
+      "AI-AGENT-WORKFLOW.md": "progressive narrowing workflow for AI agents",
       "BGS-VERSIONING.md": "immutable refs and compatibility rules",
-      "BGS-COMPLIANCE.md": "claim rules and example adoption claims",
-      "AI-RISK-CONTROL-MAP.md": "direct governance scope and external controls",
+      "AI-PROBLEM-MATRIX.md": "common AI-agent problem classes mapped to BGS",
+      "BGS-COMPLIANCE.md": "decision rules and project entry requirements",
+      "BGS-DECISION-TEMPLATE.md": "minimum project entry file and decision-record template",
+      "SCRIPT-QUALITY.md": "minimum, maximum, and recommended slices for scripts",
+      "AI-RISK-CONTROL-MAP.md": "what BGS can govern directly and what still needs external controls",
       "example-claims/README.md": "canonical claim bundle"
     }
   },
@@ -245,14 +254,15 @@
       "kind": "state_model",
       "standalone": true,
       "semantic_base": [],
-      "composition_with": ["ucc", "uic", "tic", "biss", "basic", "rig"],
+      "composition_with": ["ucc", "uic", "biss", "basic", "rig"],
       "primary_use": "Define formal state modeling, composition, coherence, and allowed transitions.",
       "maturity": {
         "level": "new_member",
         "note": "New generic state-model framework."
       },
       "authoritative_docs": [
-        "../asm/README.md"
+        "../asm/README.md",
+        "../asm/SOFTWARE-MODEL.md"
       ]
     }
   ],
@@ -286,18 +296,29 @@
       "id": "governed_and_verified_execution",
       "members": ["biss", "uic", "ucc", "tic"],
       "description": "Governed preflight, governed execution, and explicit verification."
+    },
+    {
+      "id": "state_modeled_execution",
+      "members": ["biss", "asm", "ucc"],
+      "description": "Use BISS, ASM, and UCC together so execution relies on explicit classification and an explicit state model."
+    },
+    {
+      "id": "state_modeled_governed_execution",
+      "members": ["biss", "asm", "uic", "ucc"],
+      "description": "Use BISS, ASM, UIC, and UCC together so classification, preflight, and execution rely on an explicit state model."
     }
   ],
   "orthogonal_overlays": [
     {
       "members": ["basic", "rig"],
-      "applies_to": ["gic", "gcc", "uic", "ucc", "tic"],
+      "applies_to": ["gic", "gcc", "uic", "ucc", "asm", "tic"],
       "description": "Rigor overlays do not change interaction type."
     }
   ],
   "recommended_adoption_order": [
     "biss",
     "ucc",
+    "asm",
     "tic",
     "uic",
     "basic_or_rig_overlay"

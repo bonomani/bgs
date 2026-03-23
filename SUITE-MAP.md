@@ -39,6 +39,7 @@ Repository hosting rule:
 | RIG | Rigor grade | Yes | none | orthogonal overlay on implementations | stronger implementation rigor and observability discipline | Foundation | `../ucc/governance/RIG.txt` |
 | UIC | Operational contract | Yes | GIC + GCC foundations | hands off resolved gates, preferences, policies, and approvals to UCC when combined | govern preflight decisions before execution | Draft | `../uic/contract-semantics/UIC.txt`, `../uic/guidance/UIC-PREFLIGHT.txt` |
 | UCC | Operational contract | Yes | GIC + GCC foundations | receives preflight decisions from UIC and may be verified by TIC | govern declaration-driven execution and convergence | Strong operational baseline | `../ucc/execution-semantics/UCC-EXECUTION.txt` plus the UCC execution, schema, and test corpus |
+| ASM | State model | Yes | none | may supply explicit state axes, coherence rules, and transition semantics to UIC and UCC | define formal state modeling, composition, coherence, and allowed transitions | New member | `../asm/README.md`, `../asm/SOFTWARE-MODEL.md` |
 | TIC | Verification contract | Yes | independent verification layer | verifies UIC, UCC, or other governed targets without changing their semantics | define tests, oracles, diagnostics, and traceability | Specified, suite integration partial | `../tic/SPEC.md` |
 
 ------------------------------------------------------------
@@ -52,6 +53,8 @@ Repository hosting rule:
 | GIC | GCC | observable interaction floor | explicit contracts build on observable interaction discipline |
 | GCC | UIC | contract discipline | preflight governance inherits explicit declaration and result discipline |
 | GCC | UCC | contract discipline | convergence execution inherits explicit declaration and result discipline |
+| ASM | UIC | state axes, coherence rules, admissible target states | gives preflight a formal vocabulary for approving or rejecting desired states when explicit state semantics matter |
+| ASM | UCC | state axes, derived states, coherence rules, transition model | gives governed execution a formal state vocabulary for desired state, observed state, and transition legality |
 | UIC | UCC | resolved gates, preferences, policies, approvals | determines whether execution may begin and under which declared constraints |
 | UCC | TIC | declaration, observed state, result, proof, diagnostics | gives verification an explicit target and explicit result artifacts |
 | Basic or RIG | Any implementation | rigor requirements, observability, testing expectations | overlays implementation discipline without changing interaction type |
@@ -102,20 +105,19 @@ Profile E — Verified execution
 Profile F — Governed and verified execution
 - `BISS -> UIC -> UCC -> TIC`
 
-Profile G — State modeling
-- `ASM`
+Profile G — Modeled governed execution
+- `BISS -> ASM -> UCC`
 
-Profile H — Modeled governed execution
-- `ASM -> UCC`
-
-Profile I — Modeled governed execution with preflight
-- `ASM -> UIC -> UCC`
+Profile H — Modeled governed execution with preflight
+- `BISS -> ASM -> UIC -> UCC`
 
 Orthogonal overlay
 - `Basic` or `RIG` may be applied to any of the above implementations
 
 Interpretation rules:
 - no profile is mandatory for every adopter
+- `ASM` remains a standalone framework, but standalone ASM is not a claimable BGS adoption profile
+- `ASM` may precede `UIC` and `UCC` when explicit state semantics are part of the declared scope
 - `UIC` is not required for `UCC`, but precedes `UCC` when both are used
 - `TIC` may verify `UIC`, `UCC`, or other governed targets
 - `Basic` and `RIG` do not change interaction type
@@ -151,6 +153,7 @@ It is a suite of frameworks that can be used alone or composed explicitly.
 | BISS | Foundation | Use as the classification lens early. |
 | GIC and GCC | Foundation | Use as the semantic floor for explicit interactions and contracts. |
 | UCC | Strong operational baseline | Best first operational target when you need governed execution now. |
+| ASM | New member | Add when explicit state vocabularies, coherence rules, or transition models materially improve execution or supervision clarity. |
 | TIC | Specified, suite integration partial | Add when explicit verification and traceable oracles matter. |
 | UIC | Draft | Add after the operational baseline is clear, when you need governed preflight, approvals, or policy shaping. |
 | Basic and RIG | Foundation and orthogonal | Apply continuously as implementation discipline overlays. |
@@ -158,9 +161,10 @@ It is a suite of frameworks that can be used alone or composed explicitly.
 Recommended adoption order by maturity and implementation risk:
 1. `BISS` for classification
 2. `UCC` for operationally governed execution
-3. `TIC` for explicit verification
-4. `UIC` when preflight governance is required
-5. `Basic` or `RIG` as orthogonal rigor overlays throughout
+3. `ASM` when explicit state modeling or transition legality materially improves the declared scope
+4. `TIC` for explicit verification
+5. `UIC` when preflight governance is required
+6. `Basic` or `RIG` as orthogonal rigor overlays throughout
 
 ------------------------------------------------------------
 
@@ -188,22 +192,25 @@ Human entry points:
 1. `./SUITE.md`
 2. `./BGS-NAMING.md`
 3. `./BGS-GLOSSARY.md`
-4. `./SUITE-MAP.md`
-5. `./BGS-VERSIONING.md`
-6. `./BGS-FREEZE.yaml`
-7. `./BGS-COMPLIANCE.md`
-8. `../ucc/governance/BISS.txt`
-9. `../uic/contract-semantics/UIC.txt`
-10. `../ucc/execution-semantics/UCC-EXECUTION.txt`
-11. `../tic/SPEC.md`
-12. `./AI-RISK-CONTROL-MAP.md`
-13. `./GAPS.md`
-14. `./SCRIPT-QUALITY.md`
+4. `./ONBOARDING.md`
+5. `./SUITE-MAP.md`
+6. `./BGS-VERSIONING.md`
+7. `./BGS-FREEZE.yaml`
+8. `./BGS-COMPLIANCE.md`
+9. `../ucc/governance/BISS.txt`
+10. `../uic/contract-semantics/UIC.txt`
+11. `../ucc/execution-semantics/UCC-EXECUTION.txt`
+12. `../asm/README.md`
+13. `../tic/SPEC.md`
+14. `./AI-RISK-CONTROL-MAP.md`
+15. `./GAPS.md`
+16. `./SCRIPT-QUALITY.md`
 
 Machine-friendly entry points:
 - `./suite-map.json`
 - `./BGS-NAMING.md`
 - `./BGS-GLOSSARY.md`
+- `./ONBOARDING.md`
 - `./BGS-VERSIONING.md`
 - `./BGS-FREEZE.yaml`
 - `./BGS-COMPLIANCE.md`

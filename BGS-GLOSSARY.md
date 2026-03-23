@@ -107,6 +107,8 @@ SOURCE ORIENTATION
 ------------------
 
 Related authoritative sources:
+- `../asm/README.md`
+- `../asm/SOFTWARE-MODEL.md`
 - `../ucc/governance/BISS.txt`
 - `../ucc/contract-semantics/GIC.txt`
 - `../ucc/contract-semantics/GCC.txt`

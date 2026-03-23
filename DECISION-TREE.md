@@ -35,7 +35,7 @@ If the project performs any external side effect
 or can benefit from future governance, auditability, or safer automation:
 
 Recommendation:
-- `Light BGS` or stronger
+- a named BGS slice or stronger
 
 If the project needs:
 - clearer boundaries
@@ -44,8 +44,8 @@ If the project needs:
 - but not formal governance claims
 
 Recommendation:
-- `Light BGS` meaning only the smallest useful subset
-- usually `BISS` and/or `UCC`
+- the smallest named BGS slice that matches the real need
+- usually `BGS-Classification`, `BGS-Foundation`, or `BGS-Execution`
 
 If the project needs:
 - explicit execution semantics
@@ -54,6 +54,16 @@ If the project needs:
 
 Recommendation:
 - `BGS-Execution`
+
+If the project needs:
+- explicit desired and observed state semantics
+- coherence rules or transition legality
+- a formal state model tied to governed execution
+
+Recommendation:
+- `BGS-State-Modeled-Execution`
+- use `BGS-State-Modeled-Governed` instead if preflight gates depend on
+  admissible target-state rules
 
 If the project needs:
 - preflight gates, approvals, or policy checks

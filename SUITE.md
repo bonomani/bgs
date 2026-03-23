@@ -46,8 +46,8 @@ BGS defines:
 The canonical membership matrix, repo-hosting map, adoption profiles,
 and split policy live in `./SUITE-MAP.md`.
 
-BGS does not redefine the internal semantics of UIC, UCC, TIC, BISS,
-GIC, GCC, Basic, or RIG.
+BGS does not redefine the internal semantics of UIC, UCC, TIC, ASM,
+BISS, GIC, GCC, Basic, or RIG.
 
 ------------------------------------------------------------
 
@@ -211,6 +211,8 @@ SG-16 Helpful default behaviors
 4.6 ASM
   Authority:
   `../asm/README.md`
+  plus the applicable ASM profile documents such as:
+  `../asm/SOFTWARE-MODEL.md`
 
   Role in BGS:
   - define a generic formal state model for systems
@@ -253,14 +255,25 @@ CR-5 Rigor remains orthogonal
   Basic and RIG apply across implementations and do not replace the
   interaction-type frameworks.
 
-CR-6 Partial adoption is valid
-  A stack may use only UCC, only TIC, UIC+UCC, UCC+TIC, or UIC+UCC+TIC,
-  as long as the chosen composition remains explicit.
+CR-6 ASM remains a state-model layer
+  When ASM is composed with UIC or UCC, it supplies explicit state
+  vocabulary, coherence rules, and transition semantics.
+  It does not replace preflight or execution semantics.
+
+CR-7 Partial adoption is valid
+  A stack may adopt any subset or composition named in Section 6, as long
+  as the chosen composition remains explicit.
 
 ------------------------------------------------------------
 
 6. VALID ADOPTION SHAPES
 ------------------------
+
+Classification-only stack:
+  BISS
+
+Contract-foundation stack:
+  GIC and/or GCC
 
 Minimal convergence stack:
   BISS classification -> UCC
@@ -273,6 +286,12 @@ Verified execution stack:
 
 Governed and verified execution stack:
   BISS classification -> UIC -> UCC -> TIC
+
+State-modeled execution stack:
+  BISS classification -> ASM -> UCC
+
+State-modeled governed execution stack:
+  BISS classification -> ASM -> UIC -> UCC
 
 Orthogonal rigor:
   Basic or RIG may be applied to any of the above implementations.
@@ -305,6 +324,7 @@ For fit, non-fit, and partial adoption rules, see `./BGS-COMPLIANCE.md`.
 ----------------------
 
 Authoritative semantics remain in:
+- `../asm/`
 - `../ucc/`
 - `../uic/`
 - `../tic/`

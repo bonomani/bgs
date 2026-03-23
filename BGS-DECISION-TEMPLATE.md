@@ -25,7 +25,7 @@ Template:
 # BGS Entry
 
 project_name: example-project
-bgs_slice: Light BGS
+bgs_slice: BGS-Execution
 decision_reason: "AI-assisted workflow needs explicit request/result separation"
 applies_to_scope: "backend task execution"
 decision_record_path: "./docs/governance/bgs-decision.md"
@@ -51,4 +51,3 @@ Suggested project flow:
 3. fill out the decision record
 4. point the project entry file at the decision record
 5. keep the entry file at a stable path
-
