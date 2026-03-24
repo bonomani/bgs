@@ -2,7 +2,7 @@
   "suite": {
     "short_name": "BGS",
     "long_name": "Boundary Governance Suite",
-    "version": "0.1",
+    "version": "1.0",
     "status": "draft coordination layer"
   },
   "naming": {

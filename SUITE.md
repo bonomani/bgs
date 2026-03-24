@@ -4,7 +4,7 @@ Boundary Governance Suite
 
 VERSION
 -------
-0.1
+1.0
 
 STATUS
 ------
@@ -221,14 +221,20 @@ SG-16 Helpful default behaviors
 4.6 ASM
   Authority:
   `../asm/README.md`
+  `../asm/CORE-CONCEPTS.md`
   plus the applicable ASM profile documents such as:
   `../asm/SOFTWARE-MODEL.md`
+  plus the convergence interface document:
+  `../asm/CONVERGENCE-INTERFACE.md`
 
   Role in BGS:
   - define a generic formal state model for systems
   - represent atomic and composite states
   - define coherence rules and allowed transitions
   - support software and non-software governed objects
+  - expose a derived state signal to execution engines via
+    CONVERGENCE-INTERFACE.md, which defines the normative ASM → UCC
+    composition contract
 
 4.7 TIC
   Authority:
@@ -361,6 +367,9 @@ It exists to define:
 
 When BGS text conflicts with an authoritative member-framework document,
 the member-framework document wins for its own domain.
+
+See `VERSION-MATRIX.md` for the current declared version of each framework
+member and the composition compatibility table.
 
 ------------------------------------------------------------
 

@@ -39,8 +39,10 @@ EXTERNAL CONTROL
   Examples: IAM, sandboxing, secret lifecycle, DLP, rate limiting.
 
 EXECUTION
-  The governed act of attempting to change real system state under an
-  explicit contract.
+  The governed act of driving a target toward a declared desired state
+  under an explicit contract — including verifying that the state is
+  already correct (no change applied) or applying a transition when it
+  is not.
   In BGS, execution is primarily governed by `UCC`.
 
 GOVERNANCE
