@@ -21,182 +21,109 @@ Gap states:
 - PARTIAL
 - RESOLVED
 
-------------------------------------------------------------
-
-BGS-1
-STATE: RESOLVED
-AREA: Suite identity and naming
-GOAL: BGS should have a stable identity and vocabulary that does not
-      overload existing framework terms.
-GAP:  Resolved by `./BGS-NAMING.md`, which now freezes:
-      - the canonical short name
-      - the canonical long name
-      - the relation between BGS and BISS
-      - the distinction between member repos and member frameworks
-      - preferred and prohibited suite-level wording
-IMPACT:
-- suite-level vocabulary is materially clearer
-- drift between suite naming and member-framework naming is reduced
-RESOLUTION PATH:
-- keep naming guidance aligned with suite evolution
+Note: resolved gaps are removed when closed. A retention and archival
+policy has not yet been defined.
 
 ------------------------------------------------------------
 
-BGS-2
-STATE: RESOLVED
-AREA: Suite map
-GOAL: The suite should expose one canonical dependency and composition map.
-GAP:  Resolved by `./SUITE-MAP.md` and `./suite-map.json`, which now
-      provide:
-      - a canonical member matrix
-      - standalone vs compositional usage
-      - semantic-base vs composition ordering
-      - maturity signals by framework
-      - valid adoption slices
+BGS-10
+STATE: OPEN
+AREA: Adoption slice completeness
+GOAL: All reachable compositions should either be a named claimable slice or
+      explicitly declared non-claimable.
+GAP:  VERSION-MATRIX.md line 61 references the composition
+      "UCC + ASM + UIC + TIC" under the label
+      `BGS-State-Modeled-Governed-Verified`, but this slice does not appear
+      in BGS-COMPLIANCE.md (which stops at §2.8), SUITE-MAP.md, SUITE.md,
+      or suite-map.json.  A reader cannot determine whether this is a valid
+      claimable slice, a planned future slice, or an editorial error.
 IMPACT:
-- adoption paths are now materially clearer
-- architecture review ambiguity is reduced
+
+- adopters targeting full state-modeled + governed + verified composition
+  have no normative path to claim it
+- the discrepancy between VERSION-MATRIX.md and all other slice authorities
+  undermines trust in the version matrix as a source of truth
 RESOLUTION PATH:
-- keep the canonical map aligned with member-framework evolution
+  Option A: Define BGS-State-Modeled-Governed-Verified as a ninth claimable
+            slice.  Add §2.9 to BGS-COMPLIANCE.md (required members, minimum
+            evidence), add a row to SUITE-MAP.md §4 and suite-map.json, and
+            add a row to SUITE.md §6.
+  Option B: Remove the reference from VERSION-MATRIX.md line 61 and add a
+            note clarifying that TIC can be layered on
+            BGS-State-Modeled-Governed without creating a new named slice.
 
 ------------------------------------------------------------
 
-BGS-3
-STATE: RESOLVED
-AREA: Shared glossary
-GOAL: Cross-repo terminology should remain stable and non-conflicting.
-GAP:  Resolved by `./BGS-GLOSSARY.md`, which now defines suite-level
-      cross-framework terms including:
-      - boundary
-      - governance
-      - preflight
-      - execution
-      - verification
-      - rigor
-      - member repo
-      - member framework
-      - slice
-      - overlay
-      - external control
+BGS-11
+STATE: OPEN
+AREA: ASM authoritative document alignment
+GOAL: The single authoritative entry point for ASM should be stated
+      consistently across all suite-level documents.
+GAP:  Three suite-level documents disagree on which ASM document is
+      authoritative:
+        VERSION-MATRIX.md line 26  → asm/CONVERGENCE-INTERFACE.md
+        SUITE-MAP.md line 42       → asm/README.md, asm/SOFTWARE-MODEL.md
+        suite-map.json lines 264-266 → asm/README.md, asm/SOFTWARE-MODEL.md
+      CONVERGENCE-INTERFACE.md governs ASM's composition interface with UCC.
+      README.md and SOFTWARE-MODEL.md govern the core ASM framework semantics.
+      These are different scopes; none of the documents make this explicit.
 IMPACT:
-- suite-level wording is materially clearer
-- cross-repo onboarding friction is reduced
+
+- a user following VERSION-MATRIX.md lands at the composition interface
+  but misses the framework definition
+- a user following SUITE-MAP.md or suite-map.json never reaches the
+  composition interface
 RESOLUTION PATH:
-- keep the glossary aligned with member-framework evolution
+  List all three documents where appropriate and annotate their scope:
+    asm/README.md               — suite entry point
+    asm/SOFTWARE-MODEL.md       — core framework semantics
+    asm/CONVERGENCE-INTERFACE.md — ASM–UCC composition interface
 
 ------------------------------------------------------------
 
-BGS-4
-STATE: RESOLVED
-AREA: Cross-repo versioning
-GOAL: The suite should define how separate framework versions are composed.
-GAP:  Resolved by `./BGS-VERSIONING.md` and the active freeze record
-      `./BGS-FREEZE.yaml`, which now define:
-      - the suite-level versioning units
-      - immutable reference rules
-      - required version binding for claims
-      - compatibility levels
-      - how BGS refs relate to member-repo refs
-      - how published composition records may be expressed
-      - the current pre-public numbering-freeze policy
+BGS-12
+STATE: OPEN
+AREA: UIC adoption guidance consolidation
+GOAL: Adopters should receive a single, unambiguous signal about when and
+      how to adopt UIC given its Draft maturity.
+GAP:  The implications of UIC's Draft status are expressed inconsistently:
+        VERSION-MATRIX.md §4  — warns of maturity risk; requires exact ref pin
+        SUITE-MAP.md §6       — positions UIC as step 5 (late-stage) in the
+                                 recommended adoption order
+        BGS-COMPLIANCE.md §2.5 — treats BGS-Governed (which requires UIC)
+                                  as a claimable slice with minimum evidence,
+                                  implying it is usable now without qualification
+      No single document consolidates these three signals into actionable
+      guidance.
 IMPACT:
-- suite composition is materially less ambiguous
-- version-bound suite claims are easier to interpret and audit
+
+- adopters cannot determine from one place whether UIC is safe to use now
+  (with pinning) or whether they should wait for a stable release
+- BGS-COMPLIANCE.md §2.5 may inadvertently understate the risk
 RESOLUTION PATH:
-- keep versioning policy aligned with repo and release practices
+  Add a short "Maturity note" block to BGS-COMPLIANCE.md §2.5 that cross-
+  references VERSION-MATRIX.md §4 and SUITE-MAP.md §6.  The note should
+  state: UIC is claimable at Draft maturity provided the exact ref is pinned
+  and the known state of the spec at claim time is documented.
 
 ------------------------------------------------------------
 
-BGS-5
-STATE: RESOLVED
-AREA: Suite-level AI problem mapping
-GOAL: BGS should explain clearly how the suite addresses AI-agent risk
-      classes and where its boundaries stop.
-GAP:  Resolved by `./AI-RISK-CONTROL-MAP.md`, which now provides:
-      - a problem-class coverage matrix
-      - a solution compatibility matrix
-      - explicit placement across BISS, UIC, UCC, TIC, Basic / RIG,
-        and external controls
-      - explicit statement of suite boundaries and non-goals
+BGS-13
+STATE: OPEN
+AREA: Standalone-ASM constraint visibility
+GOAL: The constraint that standalone ASM is not a claimable BGS adoption
+      slice should appear in every authoritative slice list.
+GAP:  SUITE-MAP.md line 119 states: "standalone ASM is not a claimable BGS
+      adoption slice."  This constraint is absent from VERSION-MATRIX.md §3
+      (the adoption slices table) and from BGS-COMPLIANCE.md §2.
 IMPACT:
-- suite-level risk coverage is now explicit
-- overclaim risk is reduced
-- external control dependencies are easier to communicate
+
+- a reader consulting VERSION-MATRIX.md or BGS-COMPLIANCE.md without also
+  reading SUITE-MAP.md may not discover this constraint
 RESOLUTION PATH:
-- keep the map updated as member frameworks or supported controls evolve
-
-------------------------------------------------------------
-
-BGS-6
-STATE: RESOLVED
-AREA: Compliance model
-GOAL: BGS should define what it means to claim suite-level adoption.
-GAP:  Resolved by `./BGS-COMPLIANCE.md`, which now defines:
-      - valid BGS adoption slices
-      - scope-based suite claims
-      - required claim fields
-      - minimum evidence by slice
-      - invalid and misleading claims
-      - required declaration of external controls
-IMPACT:
-- suite-level adoption claims are now materially clearer
-- incompatible or overbroad BGS claims are easier to reject
-RESOLUTION PATH:
-- keep slice and evidence rules aligned with suite evolution
-
-------------------------------------------------------------
-
-BGS-7
-STATE: RESOLVED
-AREA: Member maturity alignment
-GOAL: BGS should present member frameworks with clear maturity signals.
-GAP:  Resolved by `./SUITE-MAP.md`, which now publishes:
-      - maturity signals by member
-      - a recommended adoption order by maturity and implementation risk
-IMPACT:
-- unequal maturity is now visible at suite level
-- adopters have a clearer recommended sequencing path
-RESOLUTION PATH:
-- keep maturity signals updated as member frameworks evolve
-
-------------------------------------------------------------
-
-BGS-8
-STATE: RESOLVED
-AREA: Navigation and discoverability
-GOAL: A new reader should be able to discover the whole suite from one
-      stable entry point.
-GAP:  BGS now has:
-      - a suite entry point
-      - a canonical reading path
-      - a canonical suite map
-      - explicit repo-hosting map and split/keep policy
-      - back-references from the member repos to `../bgs/`
-IMPACT:
-- top-down navigation exists from `./bgs/`
-- reverse discovery from member repos is now materially improved
-RESOLUTION PATH:
-- keep the back-references aligned with future suite updates
-
-------------------------------------------------------------
-
-BGS-9
-STATE: RESOLVED
-AREA: Human and agent friendliness
-GOAL: BGS should be easy for humans to read and easy for AI agents to
-      traverse and apply.
-GAP:  BGS now provides:
-      - a canonical human-readable suite map in `./SUITE-MAP.md`
-      - a machine-friendly suite map in `./suite-map.json`
-      - stable suite entry points in `./README.md`
-      - explicit repo-hosting and split/keep guidance
-      - a prose-first vs machine-first artifact policy
-      - clear formatting conventions for both human and machine use
-IMPACT:
-- human and agent navigation are materially improved
-- formatting and artifact-policy drift are materially reduced
-RESOLUTION PATH:
-- keep prose and machine artifacts aligned as the suite evolves
+  Add a footer note to VERSION-MATRIX.md §3 and a note at the top of
+  BGS-COMPLIANCE.md §2 stating that ASM alone is not a claimable slice;
+  a UCC-based slice is required for BGS adoption.
 
 ------------------------------------------------------------
 

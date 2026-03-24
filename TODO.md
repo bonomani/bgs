@@ -21,4 +21,11 @@ docs remain `SUITE.md`, `SUITE-MAP.md`, `BGS-COMPLIANCE.md`, and the
 member-framework documents.
 
 Current backlog:
-- no open operational follow-up items are currently tracked
+
+- [ ] Verify that all files referenced in ONBOARDING.md lines 16-24 exist:
+      AI-AGENT-WORKFLOW.md, DECISION-TREE.md, AI-PROBLEM-MATRIX.md.
+      Fix any dangling references.
+
+- [ ] Add a "you are here" header to BGS-NAMING.md and BGS-GLOSSARY.md
+      indicating they are canonical entry points listed in SUITE-MAP.md §8.
+      No content changes needed — navigation context only.
