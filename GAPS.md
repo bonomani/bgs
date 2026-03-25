@@ -127,4 +127,177 @@ RESOLUTION PATH:
 
 ------------------------------------------------------------
 
+BGS-14
+STATE: OPEN
+AREA: Adoption slice completeness — real-adopter confirmation of BGS-10
+GOAL: BGS-10 resolution should be prioritised as Option A (define
+      BGS-State-Modeled-Governed-Verified as §2.9).
+GAP:  The mac-mini-setup project (BGS-State-Modeled-Governed adopter) uses
+      TIC on top of BGS-State-Modeled-Governed and was forced to record the
+      following in its limitations field:
+        "The claimed BGS slice is BGS-State-Modeled-Governed; TIC is used
+         as additional verification evidence because the suite does not yet
+         define a separate state-modeled-governed-verified slice."
+      This is the first known real-adopter case that demonstrates the
+      missing slice is a practical gap, not only an editorial inconsistency.
+      The adopter could not claim the slice that matches its actual
+      implementation.
+IMPACT:
+
+- real adopters using BISS + ASM + UIC + UCC + TIC together have no
+  normative slice to claim; they are forced to understate their governance
+- the limitations workaround degrades evidence quality for BGS compliance
+  reviews because the stated slice does not match the actual member set
+RESOLUTION PATH:
+  Resolve BGS-10 via Option A as a priority.
+  The mac-mini-setup project serves as a reference implementation for the
+  new slice's minimum evidence requirements.
+  Suggested minimum evidence for BGS-State-Modeled-Governed-Verified:
+  - everything required for BGS-State-Modeled-Governed
+  - at least one TIC-style test artifact with explicit oracle
+  - trace of at least one TIC oracle back to a UCC-governed target
+  - pinned TIC reference
+
+------------------------------------------------------------
+
+BGS-15
+STATE: OPEN
+AREA: BGS compliance tooling — no automated checker exists
+GOAL: Adopters should be able to verify their BGS.md and bgs-decision.md
+      are structurally valid and up to date without manual review.
+GAP:  There is no tool in the BGS suite that validates:
+      - required fields are present in a bgs-decision.md (CR-3 through CR-7)
+      - the named bgs_slice is a known claimable slice
+      - member_version_refs are pinned (not branch names or "latest")
+      - local evidence_refs paths exist on disk
+      - last_reviewed is not stale beyond a configurable threshold
+      By contrast, the mac-mini-setup project has two executable validators
+      (validate_targets_manifest.py, validate_setup_state_artifact.py) that
+      are run routinely. BGS compliance review is entirely manual.
+IMPACT:
+
+- BGS compliance docs go stale silently; version refs drift without
+  detection when member frameworks advance
+- AI agents working on adopter projects have no machine-readable signal
+  that the BGS docs are current; they must re-derive staleness by
+  comparing git SHAs manually each session
+- the burden of compliance review deters adoption or produces superficial
+  "tick-box" claims that are never re-validated
+RESOLUTION PATH:
+  Add tools/check-bgs-compliance.py (or equivalent) to the BGS repo.
+  Minimum checks:
+  - all required decision fields present (BGS-COMPLIANCE.md §3)
+  - bgs_slice is one of the named claimable slices
+  - member_version_refs values are valid immutable refs (not branch names)
+  - local evidence_refs paths resolve relative to the decision file
+  - last_reviewed is within a configurable staleness window (default 90 days)
+  Exit 0 on pass, non-zero on failure, machine-readable output.
+
+------------------------------------------------------------
+
+BGS-16
+STATE: OPEN
+AREA: UCC — component-level failure policy not specified
+GOAL: UCC should define what an orchestrator is allowed to do when a
+      component (a logical group of targets) fails.
+GAP:  UCC defines outcomes at the individual target level (converged,
+      changed, failed) but has no normative concept of a component-level
+      failure policy.  The mac-mini-setup project needed to express
+      "if this component fails, continue with the remaining components"
+      (on_fail: ignore) vs "abort the entire run."  This policy was
+      invented locally in the YAML manifest and the orchestrator shell code
+      with no UCC backing.
+      Other reasonable policies (retry, skip-dependents, escalate) are
+      similarly unspecified.
+IMPACT:
+
+- adopters building multi-component orchestrators must invent and document
+  their own failure propagation semantics
+- two adopters can implement opposite on_fail behaviours and both validly
+  claim BGS-Execution compliance
+- result artifacts do not carry a component-level outcome field, so
+  downstream consumers cannot determine whether a failed target caused its
+  component to abort or continue
+RESOLUTION PATH:
+  Add a component-level result semantics section to the UCC spec.
+  Define at minimum:
+  - on_fail: abort  — stop the entire run on first component failure
+  - on_fail: ignore — record the failure, continue with remaining components
+  - on_fail: skip-dependents — skip targets that depend on the failed component
+  Specify how the component outcome is recorded in the result artifact.
+
+------------------------------------------------------------
+
+BGS-17
+STATE: OPEN
+AREA: UCC/UIC — skip is not a normative target outcome
+GOAL: When a UIC soft gate inhibits a target, the resulting outcome should
+      have a defined name, result structure, and record format in UCC.
+GAP:  UCC defines converged, changed, and failed as target outcomes.
+      UIC defines soft gates that may inhibit execution.  But neither
+      framework defines what happens to a target that is inhibited by a
+      soft gate — the target is neither converged nor failed, it is skipped.
+      The mac-mini-setup project invented ucc_skip_target locally, which
+      emits a line and increments a counter but produces no result artifact
+      and has no normative outcome name.
+      This means skipped targets are invisible in UCC result artifacts and
+      cannot be distinguished from targets that were never declared.
+IMPACT:
+
+- skipped targets leave no traceable evidence that they were evaluated and
+  deliberately not applied
+- compliance audits cannot distinguish "was never run" from "was inhibited
+  by policy"
+- the count of skipped targets appears in the summary but the individual
+  targets are not identified in any artifact
+RESOLUTION PATH:
+  Define skip (or inhibited) as a normative UCC target outcome alongside
+  converged, changed, and failed.
+  Minimum result fields for a skipped target:
+  - outcome: skipped
+  - inhibitor: the gate name or policy reason
+  - observation: not-attempted
+  Specify how the UIC soft gate name is carried into the UCC result record.
+
+------------------------------------------------------------
+
+BGS-18
+STATE: OPEN
+AREA: TIC — oracle execution context is undefined
+GOAL: TIC should specify the execution context constraints for inline
+      oracle expressions so that adopters can write portable oracles.
+GAP:  TIC SPEC.md §4 defines oracles as "explicit and verifiable" but does
+      not specify:
+      - what shell or interpreter evaluates the oracle string
+      - what environment variables are available at evaluation time
+      - what quoting rules apply when the oracle is stored in a YAML value
+      The mac-mini-setup project hit this gap directly: an oracle written as
+        python3 -c "from importlib.metadata import version; ..."
+      failed with a SyntaxError because the YAML parser did not unescape
+      inner \" sequences, delivering literal backslash-quote to Python.
+      The fix required rewriting the oracle to avoid any inner quoting.
+      The adopter had no normative guidance to consult; the failure was
+      discovered by trial and error.
+IMPACT:
+
+- oracle authors cannot predict whether their expression will survive the
+  YAML-to-shell pipeline without testing every quoting combination
+- the same oracle string may work in one TIC runner implementation and
+  fail in another if runners handle quoting differently
+- silent evaluation failures (oracle not run, test passes vacuously) are
+  possible if the runner swallows shell errors
+RESOLUTION PATH:
+  Add an "Oracle authoring rules" section to TIC SPEC.md §4.
+  Minimum normative statements:
+  - the oracle MUST be a self-contained shell expression evaluable by /bin/sh
+  - the oracle MUST NOT rely on environment variables not defined in the
+    TIC runner's documented execution context
+  - the oracle MUST NOT contain unescaped double-quotes when stored in a
+    YAML double-quoted scalar; prefer single-quoted YAML scalars for oracles
+    containing shell expressions
+  - a TIC runner MUST report oracle evaluation failure as a test failure,
+    not as a pass
+
+------------------------------------------------------------
+
 END OF DOCUMENT
