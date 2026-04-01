@@ -111,6 +111,9 @@ Interpretation rules:
 `BGS-State-Modeled-Governed` — Modeled governed execution with preflight
 - `BISS -> ASM -> UIC -> UCC`
 
+`BGS-State-Modeled-Governed-Verified` — Modeled governed execution with preflight and verification
+- `BISS -> ASM -> UIC -> UCC -> TIC`
+
 Orthogonal overlay
 - `Basic` or `RIG` may be applied to any of the above implementations
 

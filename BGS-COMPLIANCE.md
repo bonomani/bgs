@@ -197,6 +197,11 @@ standalone ASM implementation is not a claimable BGS slice.
   - explicit evidence of hard or soft gate behavior where applicable
   - pinned UIC reference
 
+  Maturity note:
+  - UIC is at Draft maturity; this slice is claimable provided the exact
+    `uic` ref is pinned and the known state of the UIC spec at claim time
+    is documented; see `VERSION-MATRIX.md` §4 and `SUITE-MAP.md` §6
+
 2.6 BGS-Governed-Verified
   Required members:
   - `BISS`
@@ -263,6 +268,29 @@ standalone ASM implementation is not a claimable BGS slice.
   - UIC preflight artifacts or equivalent target-state gate results
   - explicit evidence of hard or soft gate behavior where applicable
   - pinned UIC reference
+
+2.9 BGS-State-Modeled-Governed-Verified
+  Required members:
+  - `BISS`
+  - `ASM`
+  - `UIC`
+  - `UCC`
+  - `TIC`
+
+  Optional overlays:
+  - `Basic`
+  - `RIG`
+
+  Allowed decision:
+  - governed preflight, governed execution, and explicit verification
+    all rely on an ASM-governed state model for admissible targets,
+    coherence, transition legality, and traceable oracle-based testing
+
+  Minimum evidence:
+  - everything required for `BGS-State-Modeled-Governed`
+  - at least one TIC-style test artifact with explicit oracle
+  - trace of at least one TIC oracle back to a UCC-governed target
+  - pinned TIC reference
 
 ------------------------------------------------------------
 
@@ -461,6 +489,7 @@ The following decisions are invalid:
 - `BGS-Execution` without `UCC`
 - `BGS-State-Modeled-Execution` without `BISS`, `ASM`, and `UCC`
 - `BGS-State-Modeled-Governed` without `BISS`, `ASM`, `UIC`, and `UCC`
+- `BGS-State-Modeled-Governed-Verified` without `BISS`, `ASM`, `UIC`, `UCC`, and `TIC`
 - selecting `RIG` alone as a BGS slice
 - claiming full AI safety solely from BGS adoption
 - claiming prompt injection, privacy, or privilege risk are eliminated
@@ -523,6 +552,99 @@ That means:
 This is intentional.
 BGS supports partial, explicit adoption rather than forcing one
 all-or-nothing suite decision.
+
+------------------------------------------------------------
+
+11. COMPONENT-LEVEL FAILURE POLICY (suite guidance)
+---------------------------------------------------
+
+When a UCC-governed scope contains multiple components (logical groups of
+targets), the adopter should declare a component-level failure policy.
+
+Recommended policy values:
+- `abort` — stop the entire run on first component failure
+- `continue` — record the failure, proceed with remaining components
+- `skip-dependents` — skip targets that depend on the failed component
+
+The chosen policy should be recorded in the decision record or the
+declaration artifact. The component-level outcome should appear in
+the UCC result artifact alongside per-target outcomes.
+
+This guidance does not extend UCC semantics. It provides a recommended
+convention until UCC defines component-level outcomes natively.
+
+------------------------------------------------------------
+
+12. SKIP AS A TARGET OUTCOME (suite guidance)
+---------------------------------------------
+
+When a UIC soft gate inhibits a target, the resulting outcome should be
+recorded as `skipped` (or `inhibited`) in the UCC result artifact.
+
+Recommended result fields for a skipped target:
+- `outcome`: skipped
+- `inhibitor`: the gate name or policy reason
+- `observation`: not-attempted
+
+This ensures skipped targets are distinguishable from targets that were
+never declared.
+
+This guidance does not extend UCC or UIC semantics. It provides a
+recommended convention until UCC defines skip as a normative outcome.
+
+------------------------------------------------------------
+
+13. TIC ORACLE AUTHORING RULES (suite guidance)
+------------------------------------------------
+
+When a TIC oracle is stored in a YAML value and evaluated by a shell
+or interpreter, the following rules apply:
+
+- the oracle should be a self-contained expression evaluable by /bin/sh
+- the oracle should not rely on environment variables not defined in the
+  TIC runner's documented execution context
+- prefer single-quoted YAML scalars for oracles containing shell
+  expressions to avoid double-quote escaping issues
+- a TIC runner must report oracle evaluation failure as a test failure,
+  not as a pass
+
+This guidance does not extend TIC semantics. It provides authoring rules
+until TIC SPEC.md defines oracle execution context natively.
+
+------------------------------------------------------------
+
+14. PRIVILEGE-GATED TRANSITIONS (suite guidance)
+-------------------------------------------------
+
+When a governed transition requires elevated privilege at execution time:
+
+- a governed implementation may declare that certain targets require
+  non-interactive elevated privilege to mutate
+- if observation succeeds but mutation is not attempted because the
+  required privilege is unavailable, the target should be represented as
+  `observation=ok, outcome=unchanged, inhibitor=policy`
+- interactive privilege prompts are outside the default governed model;
+  governed implementations should refuse interactive elevation by default
+- the distinction between a UIC preflight gate (system-level readiness)
+  and a target-local execution constraint (per-target privilege) should
+  be documented in the decision record
+
+------------------------------------------------------------
+
+15. EXTERNALLY MANAGED UPDATES (suite guidance)
+------------------------------------------------
+
+When a target is observable as outdated but its update authority resides
+outside the local execution engine:
+
+- ASM remains responsible for the observed state vocabulary
+- UCC remains responsible for the execution result vocabulary
+- a target may be observably outdated while the current run records
+  `outcome=unchanged, inhibitor=policy` when update authority is
+  explicitly external
+- the distinction between operator-facing severity (e.g. `warn`) and
+  UCC artifact semantics should be documented to prevent incompatible
+  local interpretations
 
 ------------------------------------------------------------
 

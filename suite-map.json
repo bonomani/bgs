@@ -78,7 +78,8 @@
       "BISS -> UCC -> TIC",
       "BISS -> UIC -> UCC -> TIC",
       "BISS -> ASM -> UCC",
-      "BISS -> ASM -> UIC -> UCC"
+      "BISS -> ASM -> UIC -> UCC",
+      "BISS -> ASM -> UIC -> UCC -> TIC"
     ],
     "adoption_shapes_note": "These are member compositions. Claimable suite slices are defined in BGS-COMPLIANCE.md.",
     "suite_docs_by_role": {
@@ -263,7 +264,8 @@
       },
       "authoritative_docs": [
         "../asm/README.md",
-        "../asm/SOFTWARE-MODEL.md"
+        "../asm/SOFTWARE-MODEL.md",
+        "../asm/CONVERGENCE-INTERFACE.md"
       ]
     }
   ],
@@ -307,6 +309,11 @@
       "id": "state_modeled_governed_execution",
       "members": ["biss", "asm", "uic", "ucc"],
       "description": "Use BISS, ASM, UIC, and UCC together so classification, preflight, and execution rely on an explicit state model."
+    },
+    {
+      "id": "state_modeled_governed_verified_execution",
+      "members": ["biss", "asm", "uic", "ucc", "tic"],
+      "description": "Use BISS, ASM, UIC, UCC, and TIC together so classification, preflight, execution, and verification all rely on an explicit state model."
     }
   ],
   "orthogonal_overlays": [

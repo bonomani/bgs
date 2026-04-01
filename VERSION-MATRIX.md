@@ -23,7 +23,7 @@ Read alongside `BGS-VERSIONING.md` for claim-binding rules.
 | Basic     | 1.0             | ucc      | Stable       | `ucc/governance/BASIC.txt` |
 | RIG       | 1.0             | ucc      | Stable       | `ucc/governance/RIG.txt` |
 | UCC       | 1.0             | ucc      | Stable       | `ucc/execution-semantics/UCC-EXECUTION.txt` |
-| ASM       | 1.0             | asm      | Stable       | `asm/CONVERGENCE-INTERFACE.md` |
+| ASM       | 1.0             | asm      | Stable       | `asm/README.md` (entry point), `asm/SOFTWARE-MODEL.md` (core semantics), `asm/CONVERGENCE-INTERFACE.md` (ASM–UCC composition) |
 | UIC       | 1.0             | uic      | Draft        | `uic/` |
 | TIC       | 1.0             | tic      | Specified, partial suite integration | `tic/` |
 | BGS       | 1.0             | bgs      | Stable (draft coordination layer) | `bgs/SUITE.md` |
@@ -87,6 +87,10 @@ Pinning a single `ucc` ref is sufficient to compose any subset of these.
 | BGS-Governed-Verified            | `ucc` + `uic` + `tic`             |
 | BGS-State-Modeled-Execution      | `ucc` + `asm`                     |
 | BGS-State-Modeled-Governed       | `ucc` + `asm` + `uic`             |
+| BGS-State-Modeled-Governed-Verified | `ucc` + `asm` + `uic` + `tic`  |
+
+Note: standalone ASM is valid as framework adoption but is not a claimable
+BGS adoption slice. A UCC-based slice is required for BGS adoption.
 
 ------------------------------------------------------------
 

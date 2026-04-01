@@ -315,6 +315,9 @@ State-modeled execution stack:
 State-modeled governed execution stack:
   BISS classification -> ASM -> UIC -> UCC
 
+State-modeled governed and verified execution stack:
+  BISS classification -> ASM -> UIC -> UCC -> TIC
+
 Orthogonal rigor:
   Basic or RIG may be applied to any of the above implementations.
 
